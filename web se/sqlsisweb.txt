@@ -1,0 +1,135 @@
+--
+-- ER/Studio 8.0 SQL Code Generation
+-- Company :      Hewlett-Packard
+-- Project :      Supermercado X.dm1
+-- Author :       Fernando
+--
+-- Date Created : Thursday, November 14, 2013 12:03:12
+-- Target DBMS : MySQL 5.x
+--
+
+-- 
+-- TABLE: DetalleAlmacen 
+--
+
+CREATE TABLE DetalleAlmacen(
+    ID             DECIMAL(10, 0)    NOT NULL,
+    IDProducto     DECIMAL(20, 0),
+    catidad        DECIMAL(10, 0)    NOT NULL,
+    PrecioTotal    FLOAT(8, 0)       NOT NULL,
+    PRIMARY KEY (ID)
+)ENGINE=MYISAM
+;
+
+
+
+-- 
+-- TABLE: IngresoProducto 
+--
+
+CREATE TABLE IngresoProducto(
+    IDProducto    DECIMAL(20, 0)          NOT NULL,
+    CodIngreso    DECIMAL(10, 0)          NOT NULL,
+    Proveedor     NATIONAL VARCHAR(15)    NOT NULL,
+    fecha         DATETIME                NOT NULL,
+    PRIMARY KEY (IDProducto, CodIngreso)
+)ENGINE=MYISAM
+;
+
+
+
+-- 
+-- TABLE: Producto 
+--
+
+CREATE TABLE Producto(
+    IDProducto        DECIMAL(20, 0)          NOT NULL,
+    NProducto         NATIONAL VARCHAR(20)    NOT NULL,
+    Marca             NATIONAL VARCHAR(15)    NOT NULL,
+    Precio            FLOAT(8, 0)             NOT NULL,
+    Categoria         NATIONAL VARCHAR(20)    NOT NULL,
+    Cantidad          DECIMAL(10, 0)          NOT NULL,
+    CantidadMin       DECIMAL(20, 0)          NOT NULL,
+    UnidaddeMedida    NATIONAL VARCHAR(10)    NOT NULL,
+    Estado            BINARY(10)              NOT NULL,
+    PRIMARY KEY (IDProducto)
+)ENGINE=MYISAM
+;
+
+
+
+-- 
+-- TABLE: Usuario 
+--
+
+CREATE TABLE Usuario(
+    ID             DECIMAL(10, 0)          NOT NULL,
+    Carnet         DECIMAL(10, 0)          NOT NULL,
+    Nombre         NATIONAL VARCHAR(20)    NOT NULL,
+    APaterno       NATIONAL VARCHAR(15)    NOT NULL,
+    AMaterno       NATIONAL VARCHAR(15)    NOT NULL,
+    Direccion      NATIONAL VARCHAR(30)    NOT NULL,
+    Telefono       DECIMAL(10, 0)          NOT NULL,
+    TipoUsuario    NATIONAL VARCHAR(10)    NOT NULL,
+    Estado         BINARY(2)               NOT NULL,
+    PRIMARY KEY (ID)
+)ENGINE=MYISAM
+;
+
+
+
+-- 
+-- TABLE: VentaProducto 
+--
+
+CREATE TABLE VentaProducto(
+    IDProducto    DECIMAL(20, 0)    NOT NULL,
+    ID            DECIMAL(10, 0)    NOT NULL,
+    fecha         DATETIME          NOT NULL,
+    cantidad      DECIMAL(10, 0)    NOT NULL,
+    PRIMARY KEY (IDProducto, ID)
+)ENGINE=MYISAM
+;
+
+
+
+-- 
+-- TABLE: DetalleAlmacen 
+--
+
+ALTER TABLE DetalleAlmacen ADD CONSTRAINT RefProducto7 
+    FOREIGN KEY (IDProducto)
+    REFERENCES Producto(IDProducto)
+;
+
+ALTER TABLE DetalleAlmacen ADD CONSTRAINT RefUsuario14 
+    FOREIGN KEY (ID)
+    REFERENCES Usuario(ID)
+;
+
+
+-- 
+-- TABLE: IngresoProducto 
+--
+
+ALTER TABLE IngresoProducto ADD CONSTRAINT RefProducto11 
+    FOREIGN KEY (IDProducto)
+    REFERENCES Producto(IDProducto)
+;
+
+
+-- 
+-- TABLE: VentaProducto 
+--
+
+ALTER TABLE VentaProducto ADD CONSTRAINT RefProducto12 
+    FOREIGN KEY (IDProducto)
+    REFERENCES Producto(IDProducto)
+;
+
+ALTER TABLE VentaProducto ADD CONSTRAINT RefUsuario13 
+    FOREIGN KEY (ID)
+    REFERENCES Usuario(ID)
+;
+
+
