@@ -62,14 +62,35 @@
 								</p>
 								
 							</article>
-	<!--&&&&&&&&&&&&&&&&&&     BUSCAR VEHICULO    &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&--> 
+	<!--&&&&&&&&&&&&&&&&&&     REGISTRAR ACCESORIO    &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&--> 
 							<article id="registraracc" class="panel">
 								<header>
-									<h2>Registro accesorios</h2>
+									<h2>Registro de accesorios</h2>
 								</header>
-								<p>
-									en construccion
-								</p>
+								<form action="insertarAccesorio.php" method="post">
+									<div>
+										<div class="row half">
+											<div class="6u">
+												Nombre:<input type="text" class="text" name="nombre" placeholder="Nombre" />
+											</div>
+										</div>
+										<div class="row half">
+											<div class="6u">
+												Descripcion:<input type="text" class="text" name="descripcion" placeholder="Descripcion" />
+											</div>
+										</div>
+										<div class="row half">
+											<div class="6u">
+												Costo:<input type="text" class="text" name="costo" placeholder="Costo" />
+											</div>
+										</div>
+										<div class="row">
+											<div class="12u">
+												<input type="submit" class="button" value="Registrar accesorio" />
+											</div>
+										</div>
+									</div>
+								</form>
 								
 							</article>
 						
