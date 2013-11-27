@@ -2,7 +2,7 @@
 $email = $_POST["email"];
 $pass = $_POST["contra"];
 
-	$db = mysql_connect("localhost", "root", "");
+	$db = mysql_connect("localhost", "root", "root");
 	if (!$db)
 	{
 		echo "error en base de datos: ".mysql_error($db);
@@ -21,7 +21,7 @@ $pass = $_POST["contra"];
 				if ($row['TipoUsuario'] == "user") 
 				{
 				 	mysql_close($db);
-					echo "Usuario Correcto";
+					#echo "Usuario Correcto";
 					session_start();
 					$_SESSION['pedro'] = $row['Nombre'];
 					header ("Location: usuario.php");	  	
@@ -29,7 +29,7 @@ $pass = $_POST["contra"];
 				else
 				{
 				  	mysql_close($db);
-					echo "administrador Correcto";
+					#echo "administrador Correcto";
 					session_start();
 					$_SESSION['pedro'] = $row['Nombre'];
 					header ("Location: administrador.php");	 
@@ -42,7 +42,7 @@ $pass = $_POST["contra"];
 			{
 				echo "error en base de datos:".mysql_error($db);
 				mysql_close($db);
-				header("Location: proyecto.php"); //?errorusuario=si
+				header("Location: index.php"); //?errorusuario=si
 			}
 		}
 	}	

@@ -13,7 +13,7 @@
 	<head>
     
 
-		<title>Astral by HTML5 UP</title>
+		<title>Rent a car Autito</title>
 		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
 		<meta name="description" content="" />
 		<meta name="keywords" content="" />
@@ -43,6 +43,7 @@
 						<a href="#registrar" class="fa fa-star"><span>Registrar Auto</span></a>
 						<a href="#buscarauto" class="fa fa-star"><span>Buscar</span></a>
 						<a href="#registraracc" class="fa fa-star"><span>Registrar Accesorio</span></a>
+						
 						<a href="#salir" class="fa fa-heart"><span>Salir</span></a>
                         
 						
@@ -118,47 +119,67 @@
 									<div>
 										<div class="row half">
 											<div class="6u">
-												<input type="text" class="text" name="placa" placeholder="Numero de placa" />
+												# Placa:<input type="text" class="text" name="placa" placeholder="Numero de placa" />
 											</div>
 										</div>
                                         <div class="row half">
 											<div class="6u">
-												<input type="text" class="text" name="modelo" placeholder="Modelo" />
+												Modelo:<input type="text" class="text" name="modelo" placeholder="Modelo" />
 											</div>
 										</div>
 										<div class="row half">
 											<div class="6u">
-												<input type="text" class="text" name="puertas" placeholder="# Puertas" />
+												# Puertas:<input type="text" class="text" name="puertas" placeholder="# Puertas" />
 											</div>
                                         </div>
                                         <div class="row half">
 											<div class="6u">
-												<input type="text" class="text" name="pasajeros" placeholder="# Pasajeros" />
+												# Pasajeros<input type="text" class="text" name="pasajeros" placeholder="# Pasajeros" />
 											</div>
 										</div>
                                         <div class="row half">
 											<div class="6u">
-												<input type="text" class="text" name="aire" placeholder="Aire acondicionado" />
+												Aire acondicionado:<select name="aire">
+													  <option value="SI">SI</option>
+													  <option value="NO">NO</option>
+												</select>
 											</div>
 										</div>
                                         <div class="row half">
 											<div class="6u">
-												<input type="text" class="text" name="combustible" placeholder="Tipo combustible" />
+												Tipo de combustible:<select name="combustible">
+												  <option value="etanol">Etanol</option>
+												  <option value="gasnatural">Gas Natural</option>
+												  <option value="electrico">Electrico</option>
+												  <option value="hibirido">Hibrido</option>
+												  <option value="gasolina">Gasolina</option>
+												  <option value="diesel">Diesel</option>
+												</select>
 											</div>
 										</div>
 										<div class="row half">
 											<div class="6u">
-												<input type="text" class="text" name="motor" placeholder="Motor" />
+												Motor:<input type="text" class="text" name="motor" placeholder="Motor" />
 											</div>
 										</div>
 										<div class="row half">
 											<div class="6u">
-												<input type="text" class="text" name="musica" placeholder="Musica" />
+												Musica:<select name="musica">
+													<option value="SI">SI</option>
+													<option value="NO">NO</option>
+												</select>
 											</div>
 										</div>
 										<div class="row half">
 											<div class="6u">
-												<input type="text" class="text" name="categoria" placeholder="Categoria" />
+												Categoria:<select name="categoria">
+												<option value="economico">Economico</option>
+												<option value="compacto">Compacto</option>
+												<option value="intermedio">Intermedio</option>
+												<option value="deportivo">Deportivo</option>
+												<option value="grande">Todo terreno</option>
+												<option value="minivan">Convertible</option>
+											</select>
 											</div>
 										</div>
 										<div class="row">

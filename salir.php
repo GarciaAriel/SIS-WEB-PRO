@@ -2,7 +2,7 @@
 session_start();
 unset($_SESSION["pedro"]); 
 session_destroy();
-header("Location: proyecto.php");//?errorusuario=si
+header("Location: index.php");//?errorusuario=si
 exit();
 ?>
 

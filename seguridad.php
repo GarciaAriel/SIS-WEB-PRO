@@ -6,7 +6,7 @@ session_start();
 if ( empty($_SESSION["pedro"]) )
 {
 	//si no existe, envio a la página de autentificacion
-	header("Location: proyecto.php");
+	header("Location: index.php");
 	//ademas salgo de este script
 	exit();
 }	
