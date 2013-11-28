@@ -3,7 +3,7 @@
 session_start();
 
 //COMPRUEBA QUE EL USUARIO ESTA AUTENTIFICADO
-if ( empty($_SESSION["pedro"]) )
+if ( empty($_SESSION["nombre"]) )
 {
 	//si no existe, envio a la página de autentificacion
 	header("Location: index.php");

@@ -98,11 +98,13 @@ echo "Hoy es ", date("d/n/Y");
 									<div>
 										<div class="row half">
 											<div class="6u">
+												<font color="red">*</font>
 												Nombre:<input type="text" class="text" name="nombre" placeholder="Nombre" />
 											</div>
 										</div>
                                         <div class="row half">
 											<div class="6u">
+												<font color="red">*</font>
 												Apellido paterno:<input type="text" class="text" name="apellidop" placeholder="Apellido Paterno" />
 											</div>
 										</div>
@@ -118,6 +120,7 @@ echo "Hoy es ", date("d/n/Y");
 										</div>
 										<div class="row half">
 											<div class="6u">
+												<font color="red">*</font>
 												Telefono:<input type="text" class="text" name="telefono" placeholder="Telefono" />
 											</div>
 										</div>
@@ -128,16 +131,19 @@ echo "Hoy es ", date("d/n/Y");
                                         </div>
                                         <div class="row half">
 											<div class="6u">
+												<font color="red">*</font>
 												Email:<input type="text" class="text" name="email" placeholder="Email" />
 											</div>
 										</div>
                                         <div class="row half">
 											<div class="6u">
+												<font color="red">*</font>
 												Contrase&ntilde;a:<input type="password" class="text" name="con1" placeholder="Contrase&ntilde;a" />
 											</div>
 										</div>
                                         <div class="row half">
 											<div class="6u">
+												<font color="red">*</font>
 												Repetir contrase&ntilde;a:<input type="password" class="text" name="con2" placeholder="Contrase&ntilde;a" />
 											</div>
 										</div>

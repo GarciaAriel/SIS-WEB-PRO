@@ -1,8 +1,9 @@
 <?php
 $email = $_POST["email"];
 $pass = $_POST["contra"];
+
 $pa=MD5($pass);
-	$db = mysql_connect("localhost", "root", "root");
+	$db = mysql_connect("localhost", "root", "");
 	if (!$db)
 	{
 		echo "error en base de datoss: ".mysql_error($db);
@@ -13,17 +14,26 @@ $pa=MD5($pass);
 		$res = mysql_query("SELECT * FROM usuarios WHERE Email = '$email' and Contrasena = '$pa'", $db);
 		if($res != false)
 		{
+			
 			if(mysql_num_rows($res)>0)
 			{
 				$row = mysql_fetch_assoc($res);
 				
 				if ($row['TipoUsuario'] == "user") 
 				{
-				 	mysql_close($db);
-					#echo "Usuario Correcto";
-					session_start();
-					$_SESSION['pedro'] = $row['Nombre'];
+					mysql_close($db);
+				 	session_start();
+					$_SESSION['nombre'] = $row['Nombre'];
+					$_SESSION['apaterno'] = $row['APaterno'];
+					$_SESSION['amaterno'] = $row['Amaterno'];
+					$_SESSION['direccion'] = $row['Direccion'];
+					$_SESSION['telefono'] = $row['Telefono'];
+					$_SESSION['ci'] = $row['Carnet'];
+					$_SESSION['email'] = $row['Email'];
+
 					header ("Location: usuario.php");	  	
+					
+					
 				}
 				else
 				{
@@ -31,14 +41,14 @@ $pa=MD5($pass);
 					#echo "administrador Correcto";
 					session_start();
 					$_SESSION['pedro'] = $row['Nombre'];
-					header ("Location: administrador.php");	 
+					#header ("Location: administrador.php");	 
 				}
 			}
 			else 
 			{
 				echo $pa;#"error en base de datoos:".mysql_error($db);
 				mysql_close($db);
-				header("Location: index.php"); //?errorusuario=si
+				#header("Location: index.php"); //?errorusuario=si
 			}
 		}
 	}	
