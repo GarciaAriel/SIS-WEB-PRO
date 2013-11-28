@@ -11,7 +11,8 @@
 
 <html>
 	<head>
-    
+    <?php echo $_SESSION['nombre'];?>
+    <?php echo $_SESSION['apaterno'];?>
 
 		<title>Astral by HTML5 UP</title>
 		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
@@ -59,7 +60,7 @@
                                                                         
 
                                     </h1>
-									<span class="byline">Bienvenido <?php echo $_SESSION['nombre'];?> XD</span>
+									<span class="byline">Bienvenido  XD</span>
 								</header>
 								<a href="#work" class="jumplink pic">
 									<span class="jumplink arrow fa fa-chevron-right"><span>See my work</span></span>
@@ -97,47 +98,45 @@
 								<header>
 									<h2>Ingrese sus datos</h2>
 								</header>
-								<form action="insertarUser.php" method="post">
+								<form action="actualizarDatosUsuario.php" method="post">
 									<div>
 										<div class="row half">
 											<div class="6u">
 												<font color="red">*</font>
-
-
-												Nombre:<input type="text" class="text" name="nombre" placeholder= $_SESSION['nombre'] />
+												Nombre:<input type="text" class="text" name="nombre" value=<?php echo $_SESSION['nombre'];?> />
 											</div>
 										</div>
                                         <div class="row half">
 											<div class="6u">
 												<font color="red">*</font>
-												Apellido paterno:<input type="text" class="text" name="apellidop" value=$_SESSION['nombre'] />
+												Apellido paterno:<input type="text" class="text" name="apellidop" value=<?php echo $_SESSION['apaterno'];?> />
 											</div>
 										</div>
 										<div class="row half">
 											<div class="6u">
-												Apellido materno:<input type="text" class="text" name="apellidom" placeholder="Apellido materno" />
+												Apellido materno:<input type="text" class="text" name="apellidom" value=<?php echo $_SESSION['amaterno'];?> />
 											</div>
 										</div>
 										<div class="row half">
 											<div class="6u">
-												Direccion:<input type="text" class="text" name="direccion" placeholder="Direccion" />
+												Direccion:<input type="text" class="text" name="direccion" value=<?php echo $_SESSION['direccion'];?> />
 											</div>
 										</div>
 										<div class="row half">
 											<div class="6u">
 												<font color="red">*</font>
-												Telefono:<input type="text" class="text" name="telefono" placeholder="Telefono" />
+												Telefono:<input type="text" class="text" name="telefono" value=<?php echo $_SESSION['telefono'];?> />
 											</div>
 										</div>
 										<div class="row half">
 											<div class="6u">
-												# Carnet:<input type="text" class="text" name="ci" placeholder="# Carnet" />
+												# Carnet:<input type="text" class="text" name="ci" value=<?php echo $_SESSION['ci'];?> />
 											</div>
                                         </div>
                                         <div class="row half">
 											<div class="6u">
 												<font color="red">*</font>
-												Email:<input type="text" class="text" name="email" placeholder="Email" />
+												Email:<input type="text" class="text" name="email" value=<?php echo $_SESSION['email'];?> />
 											</div>
 										</div>
                                         <div class="row">
