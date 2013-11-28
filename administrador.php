@@ -57,9 +57,13 @@
 								<header>
 									<h2>buscador</h2>
 								</header>
-								<p>
-									en construccion
-								</p>
+								<FORM METHOD=POST ACTION="buscar.php">
+									<div class="row half">
+										<div class="6u"> 
+									Buscar: <INPUT TYPE="text" NAME="busqueda">
+										</div>
+									</div> 
+								</FORM>
 								
 							</article>
 	<!--&&&&&&&&&&&&&&&&&&     REGISTRAR ACCESORIO    &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&--> 

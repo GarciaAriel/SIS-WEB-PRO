@@ -30,7 +30,7 @@ else
 		else
 		{
 			//$encrip=MD5('$password');
-			$inserta = mysql_query("INSERT INTO usuarios (Carnet,Nombre,AMaterno,APaterno,Direccion,Telefono,TipoUsuario,Email,Contrasena) VALUES ('$ci','$nombre','$apaterno','$amaterno','$direccion','$telefono','$tipouser','$email','$cont')", $db);
+			$inserta = mysql_query("INSERT INTO usuarios (Carnet,Nombre,AMaterno,APaterno,Direccion,Telefono,TipoUsuario,Email,Contrasena) VALUES ('$ci','$nombre','$apaterno','$amaterno','$direccion','$telefono','$tipouser','$email',MD5('$cont'))", $db);
 			if($inserta != false)
 			{
 				mysql_close($db);
