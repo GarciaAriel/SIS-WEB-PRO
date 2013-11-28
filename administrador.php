@@ -57,15 +57,45 @@
 								<header>
 									<h2>buscador</h2>
 								</header>
-								<FORM METHOD=POST ACTION="buscar.php">
+								<FORM METHOD=POST ACTION="administrador.php">
 									<div class="row half">
 										<div class="6u"> 
-									Buscar: <INPUT TYPE="text" NAME="busqueda">
+									Buscar: <INPUT TYPE="text" NAME="buscar" placeholder="# de placa">
+										<INPUT TYPE=Submit NAME="Buscar" VALUE="Buscar"><DD></DD>
 										</div>
 									</div> 
 								</FORM>
-								
+								<TABLE BORDER=3>
+									<TR>
+										<TD>#Placa</TD>
+										<TD>Modelo</TD>
+										<TD>Categoria</TD>
+										<TD></TD>
+									</TR>
+									<?php
+										llenarTablaBusqueda();
+									?>
+								</TABLE>
 							</article>
+							<?php
+							function llenarTablaBusqueda(){
+								$buscar = $_POST["buscar"];
+								$db = mysql_connect("localhost", "root", "root");
+								mysql_select_db("autito",$db);
+								$res=mysql_query("SELECT * FROM vehiculos WHERE NumeroPlaca like '%$buscar%'", $db);
+								while($row=mysql_fetch_row($res)){
+									$id=$row[0];
+									echo "<TR>";
+									echo "<TD>".$row[0]."</TD>";	
+									echo "<TD>".$row[2]."</TD>";	
+									echo "<TD>".$row[9]."</TD>";	
+									echo "<TD>"."<a href=\"editarProducto.php?aux=$id\">Modificar</a>"."</TD>";	
+									echo "</TR>";
+									
+								}
+
+							}
+							?>
 	<!--&&&&&&&&&&&&&&&&&&     REGISTRAR ACCESORIO    &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&--> 
 							<article id="registraracc" class="panel">
 								<header>
@@ -144,7 +174,7 @@
 									<div>
 										<div class="row half">
 											<div class="6u">
-												# Placa:<input type="text" class="text" name="placa" placeholder="Numero de placa" />
+												# Placa:<input type="text" class="text" name="placa" placeholder="# de placa" />
 											</div>
 										</div>
                                         <div class="row half">
@@ -189,10 +219,11 @@
 										</div>
 										<div class="row half">
 											<div class="6u">
-												Musica:<select name="musica">
-													<option value="SI">SI</option>
-													<option value="NO">NO</option>
-												</select>
+												Musica:<BR>
+												<input type="checkbox" name="cd"/>CD<BR>
+												<input type="checkbox" name="usb"/>USB<BR>
+												<input type="checkbox" name="radio">Radio<BR>
+												<input type="checkbox" name="mp3">MP3<BR>
 											</div>
 										</div>
 										<div class="row half">
