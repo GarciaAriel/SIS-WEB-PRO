@@ -136,7 +136,7 @@
                                                                         
 
                                     </h1>
-									<span class="byline">Bienvenido <?php echo $_SESSION['pedro'];?> XD</span>
+									<span class="byline">Bienvenido <?php echo $_SESSION['nombre'];?> XD</span>
 								</header>
 								<a href="#work" class="jumplink pic">
 									<span class="jumplink arrow fa fa-chevron-right"><span>See my work</span></span>

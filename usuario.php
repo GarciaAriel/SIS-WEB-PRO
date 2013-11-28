@@ -133,12 +133,6 @@
 												# Carnet:<input type="text" class="text" name="ci" value=<?php echo $_SESSION['ci'];?> />
 											</div>
                                         </div>
-                                        <div class="row half">
-											<div class="6u">
-												<font color="red">*</font>
-												Email:<input type="text" class="text" name="email" value=<?php echo $_SESSION['email'];?> />
-											</div>
-										</div>
                                         <div class="row">
 											<div class="12u">
 												<input type="submit" class="button" value="Registrarse" />

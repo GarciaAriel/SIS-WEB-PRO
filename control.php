@@ -25,7 +25,7 @@ $pa=MD5($pass);
 				 	session_start();
 					$_SESSION['nombre'] = $row['Nombre'];
 					$_SESSION['apaterno'] = $row['APaterno'];
-					$_SESSION['amaterno'] = $row['Amaterno'];
+					$_SESSION['amaterno'] = $row['AMaterno'];
 					$_SESSION['direccion'] = $row['Direccion'];
 					$_SESSION['telefono'] = $row['Telefono'];
 					$_SESSION['ci'] = $row['Carnet'];
@@ -38,10 +38,15 @@ $pa=MD5($pass);
 				else
 				{
 				  	mysql_close($db);
-					#echo "administrador Correcto";
 					session_start();
-					$_SESSION['pedro'] = $row['Nombre'];
-					#header ("Location: administrador.php");	 
+					$_SESSION['nombre'] = $row['Nombre'];
+					$_SESSION['apaterno'] = $row['APaterno'];
+					$_SESSION['amaterno'] = $row['AMaterno'];
+					$_SESSION['direccion'] = $row['Direccion'];
+					$_SESSION['telefono'] = $row['Telefono'];
+					$_SESSION['ci'] = $row['Carnet'];
+					$_SESSION['email'] = $row['Email'];
+					header ("Location: administrador.php");	 
 				}
 			}
 			else 
