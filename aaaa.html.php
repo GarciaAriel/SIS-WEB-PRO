@@ -11,8 +11,7 @@
 
 <html>
 	<head>
-    <?php echo $_SESSION['nombre'];?>
-    <?php echo $_SESSION['apaterno'];?>
+    
 
 		<title>Rent a car Autito</title>
 		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
@@ -32,8 +31,6 @@
 	</head>
 	<body class="homepage">
 
-
-
 		<!-- Wrapper-->
 			<div id="wrapper">
 				
@@ -41,9 +38,11 @@
 					<nav id="nav">
 						<a href="#me" class="fa fa-home active"><span>Inicio</span></a>
 						<a href="#funciones" class="fa fa-folder"><span>Funciones</span></a>
-						<a href="#buscarauto" class="fa fa-star"><span>Registrar Auto</span></a>
-						<a href="#reserva" class="fa fa-star"><span>Registrar Auto</span></a>
+						<a href="#registrar" class="fa fa-star"><span>Registrar Auto</span></a>
 						<a href="#modificarPerfil" class="fa fa-star"><span>Modificar Perfil</span></a>
+						<a href="#buscarauto" class="fa fa-star"><span>Buscar</span></a>
+						<a href="#registraracc" class="fa fa-star"><span>Registrar Accesorio</span></a>
+						
 						<a href="#salir" class="fa fa-heart"><span>Salir</span></a>
                         
 						
@@ -51,7 +50,7 @@
 
 				<!-- Main -->
 					<div id="main">
-						
+
 	<!--&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&inicioooo &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&-->
 							<article id="me" class="panel">
 								<header>
@@ -60,7 +59,7 @@
                                                                         
 
                                     </h1>
-									<span class="byline">Bienvenido  XD</span>
+									<span class="byline">Bienvenido <?php echo $_SESSION['nombre'];?> XD</span>
 								</header>
 								<a href="#work" class="jumplink pic">
 									<span class="jumplink arrow fa fa-chevron-right"><span>See my work</span></span>
@@ -73,26 +72,58 @@
 
 							</article>
 
-    <!--&&&&&&&&&&&&&&&&&&     BUSCAR VEHICULO    &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&--> 
+	<!--&&&&&&&&&&&&&&&&&&     BUSCAR VEHICULO    &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&--> 
 							<article id="buscarauto" class="panel">
 								<header>
 									<h2>buscador</h2>
 								</header>
-								<p>
-									en construccion
-								</p>
-								
-							</article>  
-	<!--&&&&&&&&&&&&&&&&&&     RESERVAR UN VEHICULO    &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&--> 
-							<article id="reserva" class="panel">
-								<header>
-									<h2>reservar un vehiculo</h2>
-								</header>
-								<p>
-									en construccion
-								</p>
-								
-							</article>  
+								<FORM METHOD=POST ACTION="#me">
+									<div class="row half">
+										<div class="6u"> 
+											Buscar: <INPUT TYPE="text" NAME="buscar" id="buscar">
+											<a href="#buscarauto" class="jumplink pic"><img src="images/13.jpg" alt="">
+										</div>
+									</div> 
+								</FORM>
+								<TABLE BORDER=1>
+									<TR>
+										<TD>#Placa</TD>
+										<TD>Modelo</TD>
+										<TD>Categoria</TD>
+										<TD></TD>
+									</TR>
+									<?php
+										llenarTablaBusqueda();
+									?>
+								</TABLE>
+							</article>
+							
+							<?php
+							function llenarTablaBusqueda()
+							{
+								$dom = new DOMDocument();
+$dom->loadPHPfile('administrador.php');
+$table=$dom->getElementById('buscar');
+								echo $table.value;
+								//if($myTextField.value != "")
+								$buscar=$bus.value;
+								$hhh = $_SESSION['usscar'];
+								$db = mysql_connect("localhost", "root", "");
+								mysql_select_db("autito",$db);
+								$res=mysql_query("SELECT * FROM vehiculos WHERE NumeroPlaca like '$hhh'", $db);
+								while($row=mysql_fetch_row($res)){
+									$id=$row[0];
+									echo "<TR>";
+									echo "<TD>".$row[0]."</TD>";	
+									echo "<TD>".$row[2]."</TD>";	
+									echo "<TD>".$row[9]."</TD>";	
+									echo "<TD>"."<a href=\"editarProducto.php?aux=$id\">Modificar</a>"."</TD>";	
+									echo "</TR>";
+									
+								}
+
+							}
+							?>
 	<!--&&&&&&&&&&&&&&&&&&&&& 	MODIFICAR DATOS PERSONALES  &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&-->
 							<article id="modificarPerfil" class="panel">
 								<header>
@@ -141,8 +172,41 @@
 									</div>
 								</form>
 							</article>
+	<!--&&&&&&&&&&&&&&&&&&     REGISTRAR ACCESORIO    &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&--> 
+							<article id="registraracc" class="panel">
+								<header>
+									<h2>Registro de accesorios</h2>
+								</header>
+								<form action="insertarAccesorio.php" method="post">
+									<div>
+										<div class="row half">
+											<div class="6u">
+												Nombre:<input type="text" class="text" name="nombre" placeholder="Nombre" />
+											</div>
+										</div>
+										<div class="row half">
+											<div class="6u">
+												Descripcion:<input type="text" class="text" name="descripcion" placeholder="Descripcion" />
+											</div>
+										</div>
+										<div class="row half">
+											<div class="6u">
+												Costo:<input type="text" class="text" name="costo" placeholder="Costo" />
+											</div>
+										</div>
+										<div class="row">
+											<div class="12u">
+												<input type="submit" class="button" value="Registrar accesorio" />
+											</div>
+										</div>
+									</div>
+								</form>
+								
+							</article>
+						
+	
 
-
+                            
         <!--&&&&&&&&&&&&&&&&&&&&&&&&&&  SALIRRRR   &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&-->
 							<article id="salir" class="panel">
 								<header>
@@ -163,51 +227,72 @@
 								<header>
 									<h2>Ingrese los datos del vehiculo</h2>
 								</header>
-								<form action="#" method="post">
+								<form action="insertarVehiculo.php" method="post">
 									<div>
 										<div class="row half">
 											<div class="6u">
-												<input type="text" class="text" name="placa" placeholder="Numero de placa" />
+												# Placa:<input type="text" class="text" name="placa" placeholder="# de placa" />
 											</div>
 										</div>
                                         <div class="row half">
 											<div class="6u">
-												<input type="text" class="text" name="modelo" placeholder="Modelo" />
+												Modelo:<input type="text" class="text" name="modelo" placeholder="Modelo" />
 											</div>
 										</div>
 										<div class="row half">
 											<div class="6u">
-												<input type="text" class="text" name="puertas" placeholder="# Puertas" />
+												# Puertas:<input type="text" class="text" name="puertas" placeholder="# Puertas" />
 											</div>
                                         </div>
                                         <div class="row half">
 											<div class="6u">
-												<input type="text" class="text" name="pasajeros" placeholder="# Pasajeros" />
+												# Pasajeros<input type="text" class="text" name="pasajeros" placeholder="# Pasajeros" />
 											</div>
 										</div>
                                         <div class="row half">
 											<div class="6u">
-												<input type="text" class="text" name="aire" placeholder="Aire acondicionado" />
+												Aire acondicionado:<select name="aire">
+													  <option value="SI">SI</option>
+													  <option value="NO">NO</option>
+												</select>
 											</div>
 										</div>
                                         <div class="row half">
 											<div class="6u">
-												<input type="text" class="text" name="combustible" placeholder="Tipo combustible" />
+												Tipo de combustible:<select name="combustible">
+												  <option value="etanol">Etanol</option>
+												  <option value="gasnatural">Gas Natural</option>
+												  <option value="electrico">Electrico</option>
+												  <option value="hibirido">Hibrido</option>
+												  <option value="gasolina">Gasolina</option>
+												  <option value="diesel">Diesel</option>
+												</select>
 											</div>
 										</div>
 										<div class="row half">
 											<div class="6u">
-												<input type="text" class="text" name="motor" placeholder="Motor" />
+												Motor:<input type="text" class="text" name="motor" placeholder="Motor" />
 											</div>
 										</div>
 										<div class="row half">
 											<div class="6u">
-												<input type="text" class="text" name="musica" placeholder="Musica" />
+												Musica:<BR>
+												<input type="checkbox" name="cd"/>CD<BR>
+												<input type="checkbox" name="usb"/>USB<BR>
+												<input type="checkbox" name="radio">Radio<BR>
+												<input type="checkbox" name="mp3">MP3<BR>
 											</div>
 										</div>
 										<div class="row half">
 											<div class="6u">
-												<input type="text" class="text" name="categoria" placeholder="Categoria" />
+												Categoria:<select name="categoria">
+												<option value="economico">Economico</option>
+												<option value="compacto">Compacto</option>
+												<option value="intermedio">Intermedio</option>
+												<option value="deportivo">Deportivo</option>
+												<option value="grande">Todo terreno</option>
+												<option value="minivan">Convertible</option>
+											</select>
 											</div>
 										</div>
 										<div class="row">
@@ -225,9 +310,9 @@
 									<h2>Tareas que puede ralizar</h2>
 								</header>
 								<p>
-									Usted tiene una cuenta de Usuario normal.
+									Usted tiene una cuenta de Aministrador.
 
-									Con los permisos de Usuario puede realizar las 
+									Con los permisos de admistrador puede realizar las 
 									siguiente operaciones.
 								</p>
 								<section class="is-gallery">
@@ -237,18 +322,20 @@
 
 
 										<div class="4u">
-											<a href="#buscarauto" class="jumplink pic"><img src="images/20.jpg" alt="">
+											<a href="#registrar" class="jumplink pic"><img src="images/13.jpg" alt="">
 											</a>
 										</div>
 										<div class="4u">
-											<a href="#reserva" class="jumplink pic"><img src="images/21.jpg" alt=""></a>
+											<a href="#buscarauto" class="jumplink pic"><img src="images/14.jpg" alt=""></a>
 										</div>
-										
+										<div class="4u">
+											<a href="#registraracc" class="jumplink pic"><img src="images/15.jpg" alt=""></a>
+										</div>
 									</div>
 								</section>
 							</article>
 
-<!--sdfsdfasdf-->
+
 
 					</div>
 		

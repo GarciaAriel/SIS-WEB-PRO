@@ -32,8 +32,6 @@
 	</head>
 	<body class="homepage">
 
-
-
 		<!-- Wrapper-->
 			<div id="wrapper">
 				
@@ -42,6 +40,7 @@
 						<a href="#me" class="fa fa-home active"><span>Inicio</span></a>
 						<a href="#funciones" class="fa fa-folder"><span>Funciones</span></a>
 						<a href="#registrar" class="fa fa-star"><span>Registrar Auto</span></a>
+						<a href="#modificarPerfil" class="fa fa-star"><span>Modificar Perfil</span></a>
 						<a href="#buscarauto" class="fa fa-star"><span>Buscar</span></a>
 						<a href="#registraracc" class="fa fa-star"><span>Registrar Accesorio</span></a>
 						<a href="#modificarvehiculo" class="fa fa-star"><span>Modificar Vehiculo</span></a>
@@ -53,20 +52,44 @@
 				<!-- Main -->
 					<div id="main">
 
+	<!--&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&inicioooo &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&-->
+							<article id="me" class="panel">
+								<header>
+									<h1>
+                                    	
+                                                                        
+
+                                    </h1>
+									<span class="byline">Bienvenido <?php echo $_SESSION['nombre'];?> XD</span>
+								</header>
+								<a href="#work" class="jumplink pic">
+									<span class="jumplink arrow fa fa-chevron-right"><span>See my work</span></span>
+									<img src="images/me.jpg" alt="" />
+								</a>
+								<a href="#funciones" class="jumplink pic">
+									<span class="jumplink arrow fa fa-chevron-right"><span>See my work</span></span>
+									<img src="images/me.jpg" alt="" />
+								</a>
+
+							</article>
+
 	<!--&&&&&&&&&&&&&&&&&&     BUSCAR VEHICULO    &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&--> 
 							<article id="buscarauto" class="panel">
 								<header>
 									<h2>buscador</h2>
 								</header>
-								<FORM METHOD=POST ACTION="administrador.php">
+								<FORM METHOD=POST ACTION="Administrador.php">
 									<div class="row half">
 										<div class="6u"> 
-									Buscar: <INPUT TYPE="text" NAME="buscar" placeholder="# de placa">
-										<INPUT TYPE=Submit NAME="Buscar" VALUE="Buscar"><DD></DD>
+											Buscar: <INPUT TYPE="text" NAME="buscar" id="buscar">
+											<input type="submit"  value="Buscar" />
+											<a href="#buscarauto" class="jumplink pic">
+												<img src="images/13.jpg" alt="">
+											</a>
 										</div>
 									</div> 
 								</FORM>
-								<TABLE BORDER=3>
+								<TABLE BORDER=1>
 									<TR>
 										<TD>#Placa</TD>
 										<TD>Modelo</TD>
@@ -81,12 +104,25 @@
 									?>
 								</TABLE>
 							</article>
+
+							
 							<?php
-							function llenarTablaBusqueda(){
-								$buscar = $_POST["buscar"];
-								$db = mysql_connect("localhost", "root", "root");
+							function llenarTablaBusqueda()
+							{
+								$bus = $_POST["buscar"];
+								
+								$db = mysql_connect("localhost", "root", "");
 								mysql_select_db("autito",$db);
-								$res=mysql_query("SELECT * FROM vehiculos WHERE NumeroPlaca like '%$buscar%'", $db);
+								if($bus == "")
+								{
+									$res=mysql_query("SELECT * FROM vehiculos", $db);
+									
+								}
+								else
+								{
+									$res=mysql_query("SELECT * FROM vehiculos WHERE NumeroPlaca like $bus", $db);
+									
+								}
 								while($row=mysql_fetch_row($res)){
 									$id=$row[0];
 									echo "<TR>";
@@ -100,6 +136,54 @@
 								}
 							}
 							?>
+	<!--&&&&&&&&&&&&&&&&&&&&& 	MODIFICAR DATOS PERSONALES  &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&-->
+							<article id="modificarPerfil" class="panel">
+								<header>
+									<h2>Ingrese sus datos</h2>
+								</header>
+								<form action="actualizarDatosUsuario.php" method="post">
+									<div>
+										<div class="row half">
+											<div class="6u">
+												<font color="red">*</font>
+												Nombre:<input type="text" class="text" name="nombre" value=<?php echo $_SESSION['nombre'];?> />
+											</div>
+										</div>
+                                        <div class="row half">
+											<div class="6u">
+												<font color="red">*</font>
+												Apellido paterno:<input type="text" class="text" name="apellidop" value=<?php echo $_SESSION['apaterno'];?> />
+											</div>
+										</div>
+										<div class="row half">
+											<div class="6u">
+												Apellido materno:<input type="text" class="text" name="apellidom" value=<?php echo $_SESSION['amaterno'];?> />
+											</div>
+										</div>
+										<div class="row half">
+											<div class="6u">
+												Direccion:<input type="text" class="text" name="direccion" value=<?php echo $_SESSION['direccion'];?> />
+											</div>
+										</div>
+										<div class="row half">
+											<div class="6u">
+												<font color="red">*</font>
+												Telefono:<input type="text" class="text" name="telefono" value=<?php echo $_SESSION['telefono'];?> />
+											</div>
+										</div>
+										<div class="row half">
+											<div class="6u">
+												# Carnet:<input type="text" class="text" name="ci" value=<?php echo $_SESSION['ci'];?> />
+											</div>
+                                        </div>
+                                        <div class="row">
+											<div class="12u">
+												<input type="submit" class="button" value="Registrarse" />
+											</div>
+										</div>
+									</div>
+								</form>
+							</article>
 	<!--&&&&&&&&&&&&&&&&&&     REGISTRAR ACCESORIO    &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&--> 
 							<article id="registraracc" class="panel">
 								<header>
@@ -130,27 +214,6 @@
 									</div>
 								</form>
 								
-							</article>
-						
-	<!--&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&inicioooo &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&-->
-							<article id="me" class="panel">
-								<header>
-									<h1>
-                                    	
-                                                                        
-
-                                    </h1>
-									<span class="byline">Bienvenido <?php echo $_SESSION['nombre'];?> XD</span>
-								</header>
-								<a href="#work" class="jumplink pic">
-									<span class="jumplink arrow fa fa-chevron-right"><span>See my work</span></span>
-									<img src="images/me.jpg" alt="" />
-								</a>
-								<a href="#funciones" class="jumplink pic">
-									<span class="jumplink arrow fa fa-chevron-right"><span>See my work</span></span>
-									<img src="images/me.jpg" alt="" />
-								</a>
-
 							</article>
 
                             
