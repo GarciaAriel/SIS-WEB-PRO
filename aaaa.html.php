@@ -77,14 +77,11 @@
 								<header>
 									<h2>buscador</h2>
 								</header>
-								<FORM METHOD=POST ACTION="Administrador.php">
+								<FORM METHOD=POST ACTION="#me">
 									<div class="row half">
 										<div class="6u"> 
 											Buscar: <INPUT TYPE="text" NAME="buscar" id="buscar">
-											<input type="submit"  value="Buscar" />
-											<a href="#buscarauto" class="jumplink pic">
-												<img src="images/13.jpg" alt="">
-											</a>
+											<a href="#buscarauto" class="jumplink pic"><img src="images/13.jpg" alt="">
 										</div>
 									</div> 
 								</FORM>
@@ -100,25 +97,20 @@
 									?>
 								</TABLE>
 							</article>
-
 							
 							<?php
 							function llenarTablaBusqueda()
 							{
-								$bus = $_POST["buscar"];
-								
+								$dom = new DOMDocument();
+$dom->loadPHPfile('administrador.php');
+$table=$dom->getElementById('buscar');
+								echo $table.value;
+								//if($myTextField.value != "")
+								$buscar=$bus.value;
+								$hhh = $_SESSION['usscar'];
 								$db = mysql_connect("localhost", "root", "");
 								mysql_select_db("autito",$db);
-								if($bus == "")
-								{
-									$res=mysql_query("SELECT * FROM vehiculos", $db);
-									
-								}
-								else
-								{
-									$res=mysql_query("SELECT * FROM vehiculos WHERE NumeroPlaca like $bus", $db);
-									
-								}
+								$res=mysql_query("SELECT * FROM vehiculos WHERE NumeroPlaca like '$hhh'", $db);
 								while($row=mysql_fetch_row($res)){
 									$id=$row[0];
 									echo "<TR>";
