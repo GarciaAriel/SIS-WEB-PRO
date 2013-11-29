@@ -81,7 +81,7 @@
                                                         <?php
                                                         function llenarTablaBusqueda(){
                                                                 $buscar = $_POST["busqueda"];
-                                                                $db = mysql_connect("localhost", "root", "root");
+                                                                $db = mysql_connect("localhost", "root", "");
                                                                 mysql_select_db("autito",$db);
                                                                 $res=mysql_query("SELECT * FROM vehiculos WHERE NumeroPlaca like '%$buscar%'", $db);
                                                                 while($row=mysql_fetch_row($res)){

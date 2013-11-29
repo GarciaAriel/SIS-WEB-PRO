@@ -15,7 +15,7 @@ $radio = $_POST['radio'];
 $musica="";
 $estado = "disponible";
 
-$db = mysql_connect("localhost", "root", "root");
+$db = mysql_connect("localhost", "root", "");
 if (!$db){
 	echo "error en base de datos: ".mysql_error($db);
 }else 
