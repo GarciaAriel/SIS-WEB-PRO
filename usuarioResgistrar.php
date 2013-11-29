@@ -40,78 +40,17 @@
 				<!-- Nav -->
 					<nav id="nav">
 						<a href="usuario.php" class="fa fa-home active"><span>Inicio</span></a>
-						<a href="#buscarauto" class="fa fa-star"><span>Registrar Auto</span></a>
+						<a href="#reserva" class="fa fa-star"><span>Reservar Vehiculo</span></a>
+						<a href="usuario.php" class="fa fa-heart"><span>Inicio</span></a>
 						<a href="#salir" class="fa fa-heart"><span>Salir</span></a>
+
                         
 						
 					</nav>
 
 				<!-- Main -->
 					<div id="main">
-	<!--&&&&&&&&&&&&&&&&&&     BUSCAR VEHICULO    &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&--> 
-							<article id="buscarauto" class="panel">
-								<header> 
-									<h2>buscador</h2>
-								</header>
-								<FORM METHOD=POST ACTION="#buscarauto" name="kik" id="kik">
-									<div class="row half">
-										<div class="6u"> 
-											Buscar: <INPUT TYPE="text" NAME="buscar" id="buscar">
-											<input type="submit"  value="Buscar" />
-											<a href="#buscarauto" class="jumplink pic" onclick="document.kik.submit();">
-												<img src="images/13.jpg" alt="">
-											</a>
-										</div>
-									</div> 
-								</FORM>
-								<TABLE BORDER=1>
-									<TR>
-										<TD>#Placa</TD>
-										<TD>Modelo</TD>
-										<TD>Categoria</TD>
-										<TD></TD>
-									</TR>
-									<?php
-										llenarTablaBusqueda();
-									?>
-								</TABLE>
-							</article>
-
-							
-							<?php
-							function llenarTablaBusqueda()
-							{
-								$bus = $_POST["buscar"];
-								
-								$db = mysql_connect("localhost", "root", "");
-								mysql_select_db("autito",$db);
-								if($bus == "")
-								{
-									$res=mysql_query("SELECT * FROM vehiculos", $db);
-									
-								}
-								else
-								{
-									$res=mysql_query("SELECT * FROM vehiculos WHERE NumeroPlaca like $bus", $db);
-									
-								}
-							
-								while($row=mysql_fetch_row($res))
-								{
-									echo "<form action='\"usuarioRes.php?aux=$row[0]\"' method='get'>";
-									$id=$row[0];
-									echo "<TR>";
-									echo "<TD>".$row[0]."</TD>";	
-									echo "<TD>".$row[2]."</TD>";
-									echo "<TD>".$row[9]."</TD>";
-									echo "<TD>"."<a href=\"usuarioResgistrar.php?aux=$id\" > Ver</a>"."</TD>";	
-									echo "</TR>";
-									echo "</form>";
-								}
-
-							}
-							?> 
-						
+	
 	<!--&&&&&&&&&&&&&&&&&&     RESERVAR UN VEHICULO    &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&--> 
 							<article id="reserva" class="panel">
 								<header>
@@ -129,9 +68,9 @@
 								echo "<form action='registrarReserva.php' method='post' >";
 								while($row=mysql_fetch_row($res))
 								{
+									$_SESSION['palcaa'] = $row[0];
 									
-									echo "Numero de placa: <input type='text' disabled class='text' size='25' name='paca' value=".$row[0].">";
-									
+									echo "<label for='male'>Numero de placa: ".$row[0]."</label>";
 									echo "<br>";
 									echo "<label for='male'>Modelo: ".$row[2]."</label>";
 									echo "<br>";
@@ -188,6 +127,7 @@ echo "<br>";echo "<br>";
                                 </form>
 							</article>    
 		
+	
 		
 <!--9999999999999999999999999999999999 PIE DE PAGINA 00000000000000000000000000000000-->
 					<div id="footer">

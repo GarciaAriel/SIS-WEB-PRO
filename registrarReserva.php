@@ -1,7 +1,6 @@
 <?php
 include ("seguridad.php");
-
-$placa = $_POST['paca'];
+$placa = $_SESSION['palcaa'];
 $fei = $_POST['inicioF'];
 $fef = $_POST['finalF'];
 $ci = $_SESSION['ci'];
