@@ -62,12 +62,14 @@
 								$db = mysql_connect("localhost", "root", "");
 								mysql_select_db("autito",$db);
 								$res=mysql_query("SELECT * FROM vehiculos WHERE NumeroPlaca like $bus", $db);
-								
+								$acc=mysql_query("SELECT * FROM accesorios", $db);
+
+								echo "<form action='registrarReserva.php' method='post' >";
 								while($row=mysql_fetch_row($res))
 								{
-									echo "<form action='registrarReserva.php' method='post'>";
-
-									echo "<label for='male' id='placa' nombre='placa' >Numero de Placa: ".$row[0]."</label>";
+									
+									echo "Numero de placa: <input type='text' disabled class='text' size='25' name='paca' value=".$row[0].">";
+									
 									echo "<br>";
 									echo "<label for='male'>Modelo: ".$row[2]."</label>";
 									echo "<br>";
@@ -86,15 +88,20 @@
 									echo "Fecha inicio: <input type='date' name='inicioF'>";
 									echo "<br>";
 									echo "Fecha final: <input type='date' name='finalF'>";
-									echo "<br>";
+									echo "<br>";echo "<br>";echo "<br>";echo "<br>";
+
+								}
+								$acc=mysql_query("SELECT * FROM accesorios", $db);
+
+								while($roww=mysql_fetch_row($acc))
+								{
+									echo "<input type='checkbox' name='accc' value='Bike'>".$roww[1]."<br>";
+							
+								}
+echo "<br>";echo "<br>";
+									echo "<input type='submit' class='button' value='Reservar' />";
 
 									echo "</form>";
-
-									
-									echo "<a href='registrarReserva.php'> Reservar</a>";	
-									
-									
-								}
 
 							
 							?> 

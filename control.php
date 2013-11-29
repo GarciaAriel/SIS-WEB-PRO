@@ -3,7 +3,7 @@ $email = $_POST["email"];
 $pass = $_POST["contra"];
 
 $pa=MD5($pass);
-	$db = mysql_connect("localhost", "root", "root");
+	$db = mysql_connect("localhost", "root", "");
 	if (!$db)
 	{
 		echo "error en base de datoss: ".mysql_error($db);
@@ -41,6 +41,13 @@ $pa=MD5($pass);
 				  	mysql_close($db);
 					session_start();
 					$_SESSION['nombre'] = $row['Nombre'];
+					$_SESSION['apaterno'] = $row['APaterno'];
+					$_SESSION['amaterno'] = $row['AMaterno'];
+					$_SESSION['direccion'] = $row['Direccion'];
+					$_SESSION['telefono'] = $row['Telefono'];
+					$_SESSION['ci'] = $row['Carnet'];
+					$_SESSION['tipo'] = $row['TipoUsuario'];
+					$_SESSION['email'] = $row['Email'];
 
 					header ("Location: administrador.php");	 
 				}

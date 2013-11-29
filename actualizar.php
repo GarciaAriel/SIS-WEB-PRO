@@ -7,7 +7,7 @@
 	$combustible = $_POST["combustible"];
 	$motor = $_POST["motor"];
 	$categoria = $_POST["categoria"];
-	$db = mysql_connect("localhost", "root", "root");
+	$db = mysql_connect("localhost", "root", "");
 	mysql_select_db("autito",$db);
 	$inserta=mysql_query("UPDATE vehiculos SET Modelo='$modelo', NumeroPuertas='$puertas', NumeroPasajeros='$pasajeros', AireAcondicionado='$aire', TipoCombustible='$combustible', Motor='$motor', Categoria='$categoria' WHERE NumeroPlaca='$id'");
 	if($inserta != false)
