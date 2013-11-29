@@ -41,7 +41,7 @@
 					<nav id="nav">
 						<a href="#me" class="fa fa-home active"><span>Inicio</span></a>
 						<a href="#funciones" class="fa fa-folder"><span>Funciones</span></a>
-						<a href="#buscarauto" class="fa fa-star"><span>Buscar Auto</span></a>
+						<a href="usuarioRes.php" class="fa fa-star"><span>Buscar Auto</span></a>
 						<a href="#reserva" class="fa fa-star"><span>Registrar Auto</span></a>
 						<a href="#modificarPerfil" class="fa fa-star"><span>Modificar Perfil</span></a>
 						<a href="#salir" class="fa fa-heart"><span>Salir</span></a>
@@ -75,7 +75,7 @@
 
     <!--&&&&&&&&&&&&&&&&&&     BUSCAR VEHICULO    &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&--> 
 							<article id="buscarauto" class="panel">
-								<header>
+								<header> 
 									<h2>buscador</h2>
 								</header>
 								<FORM METHOD=POST ACTION="#buscarauto" name="kik" id="kik">
