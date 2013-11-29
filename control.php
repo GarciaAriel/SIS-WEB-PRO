@@ -29,6 +29,7 @@ $pa=MD5($pass);
 					$_SESSION['direccion'] = $row['Direccion'];
 					$_SESSION['telefono'] = $row['Telefono'];
 					$_SESSION['ci'] = $row['Carnet'];
+					$_SESSION['tipo'] = $row['TipoUsuario'];
 					$_SESSION['email'] = $row['Email'];
 
 					header ("Location: usuario.php");	  	

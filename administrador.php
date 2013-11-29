@@ -39,6 +39,7 @@
 						<a href="#me" class="fa fa-home active"><span>Inicio</span></a>
 						<a href="#funciones" class="fa fa-folder"><span>Funciones</span></a>
 						<a href="#registrar" class="fa fa-star"><span>Registrar Auto</span></a>
+						<a href="#modificarPerfil" class="fa fa-star"><span>Modificar Perfil</span></a>
 						<a href="#buscarauto" class="fa fa-star"><span>Buscar</span></a>
 						<a href="#registraracc" class="fa fa-star"><span>Registrar Accesorio</span></a>
 						
@@ -116,6 +117,54 @@
 
 							}
 							?>
+	<!--&&&&&&&&&&&&&&&&&&&&& 	MODIFICAR DATOS PERSONALES  &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&-->
+							<article id="modificarPerfil" class="panel">
+								<header>
+									<h2>Ingrese sus datos</h2>
+								</header>
+								<form action="actualizarDatosUsuario.php" method="post">
+									<div>
+										<div class="row half">
+											<div class="6u">
+												<font color="red">*</font>
+												Nombre:<input type="text" class="text" name="nombre" value=<?php echo $_SESSION['nombre'];?> />
+											</div>
+										</div>
+                                        <div class="row half">
+											<div class="6u">
+												<font color="red">*</font>
+												Apellido paterno:<input type="text" class="text" name="apellidop" value=<?php echo $_SESSION['apaterno'];?> />
+											</div>
+										</div>
+										<div class="row half">
+											<div class="6u">
+												Apellido materno:<input type="text" class="text" name="apellidom" value=<?php echo $_SESSION['amaterno'];?> />
+											</div>
+										</div>
+										<div class="row half">
+											<div class="6u">
+												Direccion:<input type="text" class="text" name="direccion" value=<?php echo $_SESSION['direccion'];?> />
+											</div>
+										</div>
+										<div class="row half">
+											<div class="6u">
+												<font color="red">*</font>
+												Telefono:<input type="text" class="text" name="telefono" value=<?php echo $_SESSION['telefono'];?> />
+											</div>
+										</div>
+										<div class="row half">
+											<div class="6u">
+												# Carnet:<input type="text" class="text" name="ci" value=<?php echo $_SESSION['ci'];?> />
+											</div>
+                                        </div>
+                                        <div class="row">
+											<div class="12u">
+												<input type="submit" class="button" value="Registrarse" />
+											</div>
+										</div>
+									</div>
+								</form>
+							</article>
 	<!--&&&&&&&&&&&&&&&&&&     REGISTRAR ACCESORIO    &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&--> 
 							<article id="registraracc" class="panel">
 								<header>
