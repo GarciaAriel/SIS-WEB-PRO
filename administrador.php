@@ -31,8 +31,6 @@
 	</head>
 	<body class="homepage">
 
-
-
 		<!-- Wrapper-->
 			<div id="wrapper">
 				
@@ -51,6 +49,27 @@
 
 				<!-- Main -->
 					<div id="main">
+
+	<!--&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&inicioooo &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&-->
+							<article id="me" class="panel">
+								<header>
+									<h1>
+                                    	
+                                                                        
+
+                                    </h1>
+									<span class="byline">Bienvenido <?php echo $_SESSION['nombre'];?> XD</span>
+								</header>
+								<a href="#work" class="jumplink pic">
+									<span class="jumplink arrow fa fa-chevron-right"><span>See my work</span></span>
+									<img src="images/me.jpg" alt="" />
+								</a>
+								<a href="#funciones" class="jumplink pic">
+									<span class="jumplink arrow fa fa-chevron-right"><span>See my work</span></span>
+									<img src="images/me.jpg" alt="" />
+								</a>
+
+							</article>
 
 	<!--&&&&&&&&&&&&&&&&&&     BUSCAR VEHICULO    &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&--> 
 							<article id="buscarauto" class="panel">
@@ -78,9 +97,10 @@
 								</TABLE>
 							</article>
 							<?php
-							function llenarTablaBusqueda(){
+							function llenarTablaBusqueda()
+							{
 								$buscar = $_POST["buscar"];
-								$db = mysql_connect("localhost", "root", "root");
+								$db = mysql_connect("localhost", "root", "");
 								mysql_select_db("autito",$db);
 								$res=mysql_query("SELECT * FROM vehiculos WHERE NumeroPlaca like '%$buscar%'", $db);
 								while($row=mysql_fetch_row($res)){
@@ -128,26 +148,7 @@
 								
 							</article>
 						
-	<!--&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&inicioooo &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&-->
-							<article id="me" class="panel">
-								<header>
-									<h1>
-                                    	
-                                                                        
-
-                                    </h1>
-									<span class="byline">Bienvenido <?php echo $_SESSION['nombre'];?> XD</span>
-								</header>
-								<a href="#work" class="jumplink pic">
-									<span class="jumplink arrow fa fa-chevron-right"><span>See my work</span></span>
-									<img src="images/me.jpg" alt="" />
-								</a>
-								<a href="#funciones" class="jumplink pic">
-									<span class="jumplink arrow fa fa-chevron-right"><span>See my work</span></span>
-									<img src="images/me.jpg" alt="" />
-								</a>
-
-							</article>
+	
 
                             
         <!--&&&&&&&&&&&&&&&&&&&&&&&&&&  SALIRRRR   &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&-->
