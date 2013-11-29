@@ -92,7 +92,7 @@
                                                                         echo "<TD>".$row[9]."</TD>";
                                                                         echo "<TD>".$row[1]."</TD>";        
                                                                         echo "<TD>"."<a href=\"editarVehiculo.php?aux=$id\">Modificar</a>"."</TD>";        
-                                                                        echo "<TD>"."<a href=\"administrador.php?aux=$id\">Eliminar</a>"."</TD>";
+                                                                        echo "<TD>"."<a href=\"eliminarVehiculo.php?aux=$id\">Eliminar</a>"."</TD>";
                                                                         echo "</TR>";        
                                                                 }
                                                         }

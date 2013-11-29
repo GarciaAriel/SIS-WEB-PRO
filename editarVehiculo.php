@@ -39,10 +39,14 @@
 				
 				<!-- Nav -->
 					<nav id="nav">
+
+						<a href="administrador.php" class="fa fa-home active"><span>Inicio</span></a>
 						<a href="#modificarvehiculo" class="fa fa-star"><span>Modificar Vehiculo</span></a>
 					</nav>
 				<!-- Main -->
 					<div id="main">
+						<article>
+						</article>
 						<article id="modificarvehiculo" class="panel">
 							<?php 
 							function cargarDatos(){
