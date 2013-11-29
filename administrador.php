@@ -43,16 +43,61 @@
 						<a href="#modificarPerfil" class="fa fa-star"><span>Modificar Perfil</span></a>
 						<a href="#buscarauto" class="fa fa-star"><span>Buscar</span></a>
 						<a href="#registraracc" class="fa fa-star"><span>Registrar Accesorio</span></a>
-						<a href="#modificarvehiculo" class="fa fa-star"><span>Modificar Vehiculo</span></a>
 						<a href="#salir" class="fa fa-heart"><span>Salir</span></a>
                         
 						
 					</nav>
 
 				<!-- Main -->
-					<div id="main">
 
-	<!--&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&inicioooo &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&-->
+<!--&&&&&&&&&&&&&&&&&&     BUSCAR VEHICULO    &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&--> 
+					<div id="main"><article id="buscarauto" class="panel">
+                                <header>
+                                    <h2>buscador</h2>
+                                </header>
+                                                                <FORM METHOD=POST ACTION="administrador.php">
+                                                                        <div class="row half">
+                                                                                <div class="6u"> 
+                                                                        Buscar: <INPUT TYPE="text" NAME="busqueda" placeholder="# de placa">
+                                                                                <INPUT TYPE=Submit NAME="Buscar" VALUE="Buscar"><DD></DD>
+                                                                                </div>
+                                                                        </div> 
+                                                                </FORM>
+                                                                <TABLE BORDER=3>
+                                                                        <TR>
+                                                                                <TD>#Placa</TD>
+                                                                                <TD>Modelo</TD>
+                                                                                <TD>Categoria</TD>
+                                                                                <TD>Estado</TD>
+                                                                                <TD></TD>
+                                                                                <TD></TD>
+                                                                        </TR>
+                                                                        <?php
+                                                                               
+                                                                                llenarTablaBusqueda();
+                                                                        ?>
+                                                                </TABLE>
+                                                        </article>
+                                                        <?php
+                                                        function llenarTablaBusqueda(){
+                                                                $buscar = $_POST["busqueda"];
+                                                                $db = mysql_connect("localhost", "root", "root");
+                                                                mysql_select_db("autito",$db);
+                                                                $res=mysql_query("SELECT * FROM vehiculos WHERE NumeroPlaca like '%$buscar%'", $db);
+                                                                while($row=mysql_fetch_row($res)){
+                                                                        $id=$row[0];
+                                                                        echo "<TR>";
+                                                                        echo "<TD>".$row[0]."</TD>";        
+                                                                        echo "<TD>".$row[2]."</TD>";        
+                                                                        echo "<TD>".$row[9]."</TD>";
+                                                                        echo "<TD>".$row[1]."</TD>";        
+                                                                        echo "<TD>"."<a href=\"editarVehiculo.php?aux=$id\">Modificar</a>"."</TD>";        
+                                                                        echo "<TD>"."<a href=\"administrador.php?aux=$id\">Eliminar</a>"."</TD>";
+                                                                        echo "</TR>";        
+                                                                }
+                                                        }
+                                                        ?>
+<!--Inicio-->
 							<article id="me" class="panel">
 								<header>
 									<h1>
@@ -73,69 +118,8 @@
 
 							</article>
 
-	<!--&&&&&&&&&&&&&&&&&&     BUSCAR VEHICULO    &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&--> 
-							<article id="buscarauto" class="panel">
-								<header>
-									<h2>buscador</h2>
-								</header>
-								<FORM METHOD=POST ACTION="Administrador.php">
-									<div class="row half">
-										<div class="6u"> 
-											Buscar: <INPUT TYPE="text" NAME="buscar" id="buscar">
-											<input type="submit"  value="Buscar" />
-											<a href="#buscarauto" class="jumplink pic">
-												<img src="images/13.jpg" alt="">
-											</a>
-										</div>
-									</div> 
-								</FORM>
-								<TABLE BORDER=1>
-									<TR>
-										<TD>#Placa</TD>
-										<TD>Modelo</TD>
-										<TD>Categoria</TD>
-										<TD>Estado</TD>
-										<TD></TD>
-										<TD></TD>
-									</TR>
-									<?php
-										if(isset($_POST["buscar"])){
-										llenarTablaBusqueda();}
-									?>
-								</TABLE>
-							</article>
-
+	
 							
-							<?php
-							function llenarTablaBusqueda()
-							{
-								$bus = $_POST["buscar"];
-								
-								$db = mysql_connect("localhost", "root", "");
-								mysql_select_db("autito",$db);
-								if($bus == "")
-								{
-									$res=mysql_query("SELECT * FROM vehiculos", $db);
-									
-								}
-								else
-								{
-									$res=mysql_query("SELECT * FROM vehiculos WHERE NumeroPlaca like $bus", $db);
-									
-								}
-								while($row=mysql_fetch_row($res)){
-									$id=$row[0];
-									echo "<TR>";
-									echo "<TD>".$row[0]."</TD>";	
-									echo "<TD>".$row[2]."</TD>";	
-									echo "<TD>".$row[9]."</TD>";
-									echo "<TD>".$row[1]."</TD>";	
-									echo "<TD>"."<a href=\"editarVehiculo.php?aux=$id\">Modificar</a>"."</TD>";	
-									echo "<TD>"."<a href=\"administrador.php?aux=$id\">Eliminar</a>"."</TD>";
-									echo "</TR>";	
-								}
-							}
-							?>
 	<!--&&&&&&&&&&&&&&&&&&&&& 	MODIFICAR DATOS PERSONALES  &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&-->
 							<article id="modificarPerfil" class="panel">
 								<header>
