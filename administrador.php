@@ -11,7 +11,8 @@
 
 <html>
 	<head>
-    
+    <?php echo $_SESSION['nombre'];?>
+    <?php echo $_SESSION['apaterno'];?>
 
 		<title>Rent a car Autito</title>
 		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
@@ -43,7 +44,7 @@
 						<a href="#registrar" class="fa fa-star"><span>Registrar Auto</span></a>
 						<a href="#buscarauto" class="fa fa-star"><span>Buscar</span></a>
 						<a href="#registraracc" class="fa fa-star"><span>Registrar Accesorio</span></a>
-						
+						<a href="#modificarvehiculo" class="fa fa-star"><span>Modificar Vehiculo</span></a>
 						<a href="#salir" class="fa fa-heart"><span>Salir</span></a>
                         
 						
@@ -70,10 +71,13 @@
 										<TD>#Placa</TD>
 										<TD>Modelo</TD>
 										<TD>Categoria</TD>
+										<TD>Estado</TD>
+										<TD></TD>
 										<TD></TD>
 									</TR>
 									<?php
-										llenarTablaBusqueda();
+										if(isset($_POST["buscar"])){
+										llenarTablaBusqueda();}
 									?>
 								</TABLE>
 							</article>
@@ -88,12 +92,12 @@
 									echo "<TR>";
 									echo "<TD>".$row[0]."</TD>";	
 									echo "<TD>".$row[2]."</TD>";	
-									echo "<TD>".$row[9]."</TD>";	
-									echo "<TD>"."<a href=\"editarProducto.php?aux=$id\">Modificar</a>"."</TD>";	
-									echo "</TR>";
-									
+									echo "<TD>".$row[9]."</TD>";
+									echo "<TD>".$row[1]."</TD>";	
+									echo "<TD>"."<a href=\"editarVehiculo.php?aux=$id\">Modificar</a>"."</TD>";	
+									echo "<TD>"."<a href=\"administrador.php?aux=$id\">Eliminar</a>"."</TD>";
+									echo "</TR>";	
 								}
-
 							}
 							?>
 	<!--&&&&&&&&&&&&&&&&&&     REGISTRAR ACCESORIO    &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&--> 
@@ -136,7 +140,7 @@
                                                                         
 
                                     </h1>
-									<span class="byline">Bienvenido <?php echo $_SESSION['pedro'];?> XD</span>
+									<span class="byline">Bienvenido <?php echo $_SESSION['nombre'];?> XD</span>
 								</header>
 								<a href="#work" class="jumplink pic">
 									<span class="jumplink arrow fa fa-chevron-right"><span>See my work</span></span>

@@ -3,7 +3,7 @@ $email = $_POST["email"];
 $pass = $_POST["contra"];
 
 $pa=MD5($pass);
-	$db = mysql_connect("localhost", "root", "");
+	$db = mysql_connect("localhost", "root", "root");
 	if (!$db)
 	{
 		echo "error en base de datoss: ".mysql_error($db);
@@ -40,8 +40,8 @@ $pa=MD5($pass);
 				  	mysql_close($db);
 					#echo "administrador Correcto";
 					session_start();
-					$_SESSION['pedro'] = $row['Nombre'];
-					#header ("Location: administrador.php");	 
+					$_SESSION['nombre'] = $row['Nombre'];
+					header ("Location: administrador.php");	 
 				}
 			}
 			else 

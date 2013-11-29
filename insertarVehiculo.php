@@ -41,7 +41,7 @@ if (!$db){
 			if($inserta != false)
 			{
 				mysql_close($db);			
-				#header("Location: administrador.php");//?errorusuario=si
+				header("Location: administrador.php");//?errorusuario=si
 			}
 			else 
 			{				
