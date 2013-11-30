@@ -7,7 +7,7 @@
 	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
 -->
 
-<?php include ("seguridad.php");?> 
+<?php include ("seguridad.php");?>
 
 <html>
 	<head>
@@ -77,11 +77,12 @@
                                                                                 llenarTablaBusqueda();
                                                                         ?>
                                                                 </TABLE>
+                                                                <a href>
                                                         </article>
                                                         <?php
                                                         function llenarTablaBusqueda(){
                                                                 $buscar = $_POST["busqueda"];
-                                                                $db = mysql_connect("localhost", "root", "");
+                                                                $db = mysql_connect("localhost", "root", "root");
                                                                 mysql_select_db("autito",$db);
                                                                 $res=mysql_query("SELECT * FROM vehiculos WHERE NumeroPlaca like '%$buscar%'", $db);
                                                                 while($row=mysql_fetch_row($res)){
