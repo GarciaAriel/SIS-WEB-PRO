@@ -19,7 +19,6 @@ else
 			if($inserta != false)
 			{
 				mysql_close($db);
-				echo "siii";
 				header("Location: usuario.php");
 			}
 			else 
