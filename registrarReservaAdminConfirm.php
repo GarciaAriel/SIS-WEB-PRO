@@ -5,7 +5,7 @@ $placa = $_SESSION['palcaaas'];
 $ci = $_SESSION['carnettt'];
 
 //$ci = $_SESSION['ci'];
-$db = mysql_connect("localhost", "root", "");
+$db = mysql_connect("localhost", "root", "root");
 if (!$db)
 {
 	echo "error en base de datos: ".mysql_error($db);

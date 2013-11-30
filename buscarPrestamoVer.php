@@ -60,7 +60,7 @@ $apaterno = $_GET['pla'];
 								$pl = $_GET["pla"];
 
 								
-								$db = mysql_connect("localhost", "root", "");
+								$db = mysql_connect("localhost", "root", "root");
 								mysql_select_db("autito",$db);
 								$res=mysql_query("SELECT  u.Nombre, u.APaterno, v.NumeroPlaca, v.Modelo, v.Costo, P.Estado, P.FechaInicio, P.FechaDevolucion,u.Carnet FROM prestamos P, usuarios u, vehiculos v WHERE P.Carnet = '$ca' and '$ca' = u.Carnet and '$pl' = v.NumeroPlaca and P.NumeroPlaca = '$pl'", $db);
 								

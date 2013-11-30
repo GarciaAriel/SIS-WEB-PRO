@@ -13,7 +13,7 @@ if(isset($_POST['mp3'])) $mp3 = 1; else $mp3 = 0;
 if(isset($_POST['usb'])) $usb = 1; else $usb = 0;
 $costo=$_POST['costo'];
 $estado = "disponible";
-$db = mysql_connect("localhost", "root", "");
+$db = mysql_connect("localhost", "root", "root");
 if (!$db){
 	echo "error en base de datos: ".mysql_error($db);
 }else 

@@ -10,7 +10,7 @@
 		$ci = $_POST['ci'];
 		$email = $_SESSION["email"];
 
-		$db = mysql_connect("localhost", "root", "");
+		$db = mysql_connect("localhost", "root", "root");
 		if (!$db)
 		{
 			echo "error en base de datoss: ".mysql_error($db);

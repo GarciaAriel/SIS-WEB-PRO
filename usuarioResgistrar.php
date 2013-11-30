@@ -53,7 +53,7 @@
 								
 							<?php
 								$bus = $_GET["aux"];
-								$db = mysql_connect("localhost", "root", "");
+								$db = mysql_connect("localhost", "root", "root");
 								mysql_select_db("autito",$db);
 								$res=mysql_query("SELECT * FROM vehiculos WHERE NumeroPlaca='$bus'", $db);
 								$acc=mysql_query("SELECT * FROM accesorios", $db);
