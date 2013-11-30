@@ -59,10 +59,11 @@
 								
 							<?php
 								$bus = $_GET["aux"];
-								echo $bus."kllklkl";
+
 								$db = mysql_connect("localhost", "root", "");
 								mysql_select_db("autito",$db);
 								$res=mysql_query("SELECT * FROM vehiculos WHERE NumeroPlaca like $bus", $db); //numero de placa
+
 								$acc=mysql_query("SELECT * FROM accesorios", $db);
 
 								
