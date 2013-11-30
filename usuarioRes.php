@@ -64,17 +64,20 @@
 										</div>
 									</div> 
 								</FORM>
+							<div class="CSSTableGenerator" >	
 								<TABLE BORDER=1>
 									<TR>
 										<TD>#Placa</TD>
 										<TD>Modelo</TD>
 										<TD>Categoria</TD>
+										<TD>Costo por dia</TD>
 										<TD></TD>
 									</TR>
 									<?php
 										llenarTablaBusqueda();
 									?>
 								</TABLE>
+							</div>	
 							</article>
 
 							
@@ -87,7 +90,7 @@
 								mysql_select_db("autito",$db);
 								if($bus == "")
 								{
-									$res=mysql_query("SELECT * FROM vehiculos", $db);
+									$res=mysql_query("SELECT * FROM vehiculos WHERE Estado='disponible'", $db);
 									
 								}
 								else
@@ -103,6 +106,7 @@
 									echo "<TR>";
 									echo "<TD>".$row[0]."</TD>";	
 									echo "<TD>".$row[2]."</TD>";
+									echo "<TD>".$row[8]."</TD>";
 									echo "<TD>".$row[9]."</TD>";
 									echo "<TD>"."<a href=\"usuarioResgistrar.php?aux=$id\" > Ver</a>"."</TD>";	
 									echo "</TR>";

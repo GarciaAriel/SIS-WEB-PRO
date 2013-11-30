@@ -75,13 +75,17 @@
 									echo "<br>";
 									echo "<label for='male'>Tipo de combustible: ".$row[6]."</label>";
 									echo "<br>";
-									echo "<label for='male'>Musica: ".$row[8]."</label>";
+									echo "<label for='male'>Categoria: ".$row[8]."</label>";
 									echo "<br>";
-									echo "<label for='male'>Categoria: ".$row[9]."</label>";
+									echo "<label for='male'>Musica: </label><br>";
+									if ($row[10] == true) {	echo "Cuenta con reproductor de CD <br>";  }
+									if ($row[11] == true) {	echo "Cuenta con MP3 <br>";  }
+									if ($row[12] == true) {	echo "Cuenta con una radio<br>";  }
+									if ($row[13] == true) {	echo "Cuenta con entrada USB<br>";  }
 									echo "<br>";
-									echo "Fecha inicio: <input type='date' name='inicioF'>";
+									echo "Fecha inicio: <input type='date' required  name='inicioF'>";
 									echo "<br>";
-									echo "Fecha final: <input type='date' name='finalF'>";
+									echo "Fecha final: <input type='date' required  name='finalF'>";
 									echo "<br>";echo "<br>";
 
 								}

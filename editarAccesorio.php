@@ -42,7 +42,7 @@
 							<?php 
 							function cargarDatos(){
 							$id=$_GET["aux"];
-							$db = mysql_connect("localhost", "root", "root");
+							$db = mysql_connect("localhost", "root", "");
 							mysql_select_db("autito",$db);
 							$res=mysql_query("SELECT * FROM accesorios Where Id='$id'", $db);
 							

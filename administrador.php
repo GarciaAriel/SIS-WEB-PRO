@@ -59,10 +59,11 @@
                                                                         <div class="row half">
                                                                                 <div class="6u"> 
                                                                         Buscar: <INPUT TYPE="text" NAME="busqueda" placeholder="# de placa">
-                                                                                <INPUT TYPE=Submit NAME="Buscar" VALUE="Buscar"><DD></DD>
+                                                                                <INPUT TYPE=Submit NAME="Buscar" class="button" VALUE="Buscar"><DD></DD>
                                                                                 </div>
                                                                         </div> 
                                                                 </FORM>
+                                                                <div class="CSSTableGenerator" >
                                                                 <TABLE BORDER=3>
                                                                         <TR>
                                                                                 <TD>#Placa</TD>
@@ -78,6 +79,7 @@
                                                                                 llenarTablaBusqueda();
                                                                         ?>
                                                                 </TABLE>
+                                                                </div>
                                                                 <a href="reportes.php">Imprimir Reportes</a>
                                                         </article>
                                                         <?php
@@ -94,7 +96,7 @@
                                                                         echo "<TD>".$row[8]."</TD>";        
                                                                         echo "<TD>".$row[9]."</TD>";
                                                                         echo "<TD>".$row[1]."</TD>";       
-                                                                        echo "<TD>"."<a href=\"editarVehiculo.php?aux=$id\">Modificar</a>"."</TD>";        
+                                                                        echo "<TD>"."<a href=\"editarVehiculo.php?aux=$id\" >Modificar</a>"."</TD>";        
                                                                         echo "<TD>"."<a href=\"eliminarVehiculo.php?aux=$id\">Eliminar</a>"."</TD>";
                                                                         echo "<TD>"."<a href=\"administradorRegistrar.php?aux=$id\">Ver</a>"."</TD>";
                                                                         echo "</TR>";        

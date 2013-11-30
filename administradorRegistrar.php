@@ -60,13 +60,13 @@
 							<?php
 								$bus = $_GET["aux"];
 
-								$db = mysql_connect("localhost", "root", "root");
+								$db = mysql_connect("localhost", "root", "");
 								mysql_select_db("autito",$db);
 								$res=mysql_query("SELECT * FROM vehiculos WHERE NumeroPlaca='$bus'", $db); //numero de placa
 
 								$acc=mysql_query("SELECT * FROM accesorios", $db);
-
-								
+								$fechass=mysql_query("SELECT * FROM prestamos WHERE NumeroPlaca='$bus'", $db);
+								$fechasss=mysql_fetch_row($fechass);
 								$estadovehiculo = "";
 								while($row=mysql_fetch_row($res))
 								{ 
@@ -97,8 +97,20 @@
 											
 
 										}
-										else{	echo "oto";
-											echo "<form action='registrarReserva.php' method='post' >";
+										else{	
+											echo "<form action='regiserva.php' method='post' >";
+											echo "<h2>Datos del usuario que posee el vehiculo </h2>";
+
+											$res2=mysql_query("SELECT Carnet FROM prestamos WHERE NumeroPlaca='$bus'", $db);
+											$row2=mysql_fetch_row($res2);
+											$usuarioQueSolicito = $row2[0];
+											$res3=mysql_query("SELECT * FROM usuarios WHERE Carnet='$usuarioQueSolicito'", $db);
+											$row3=mysql_fetch_row($res3);
+											$_SESSION['carnettt'] = $usuarioQueSolicito;
+											echo "<label for='male'>Nombre: ".$row3[1]."</label>";
+											echo "<br>";
+											echo "<label for='male'>Apellido paterno: ".$row3[2]."</label>";
+											echo "<br>";
 										}
 									}
 									echo "<h2>El vehiculo cuenta con las siguiente caracteristicas</h2>";
@@ -114,13 +126,17 @@
 									echo "<br>";
 									echo "<label for='male'>Tipo de combustible: ".$row[6]."</label>";
 									echo "<br>";
-									echo "<label for='male'>Musica: ".$row[8]."</label>";
+									echo "<label for='male'>Categoria: ".$row[8]."</label>";
 									echo "<br>";
-									echo "<label for='male'>Categoria: ".$row[9]."</label>";
+									echo "<label for='male'>Musica: </label><br>";
+									if ($row[10] == true) {	echo "Cuenta con reproductor de CD <br>";  }
+									if ($row[11] == true) {	echo "Cuenta con MP3 <br>";  }
+									if ($row[12] == true) {	echo "Cuenta con una radio<br>";  }
+									if ($row[13] == true) {	echo "Cuenta con entrada USB<br>";  }
 									echo "<br>";
-									echo "Fecha inicio: <input type='date' name='inicioF'>";
+									echo "Fecha inicio: <input type='date' required  name='inicioF' value=".$fechasss[4].">";
 									echo "<br>";
-									echo "Fecha final: <input type='date' name='finalF'>";
+									echo "Fecha final: <input type='date' required  name='finalF' value=".$fechasss[5].">";
 									echo "<br>";echo "<br>";
 
 								}
@@ -138,13 +154,12 @@
 									if ($estadovehiculo == "disponible") {
 										echo "<input type='submit' class='button' value='Reservar' />";
 									}						
-									else		
+									else
+									{		
 										if ($estadovehiculo == "reservado") {
 											echo "<input type='submit' class='button' value='Confirmar la Reserva' />";
 										}
-										else{
-											echo "<input type='submit' class='button' value='Liberar vehiculo' />";
-										}
+									}	
 										
 
 									echo "</form>";

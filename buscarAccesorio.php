@@ -48,11 +48,12 @@
 									<div class="row half">
 										<div class="6u"> 
 											Buscar: <INPUT TYPE="text" NAME="buscar" id="buscar">
-											<input type="submit"  value="Buscar" />
+											<input type="submit" class="button"  value="Buscar" />
 											
 										</div>
 									</div> 
 								</FORM>
+							<div class="CSSTableGenerator" >
 								<TABLE BORDER=1>
 									<TR>
 										<TD>Nombre</TD>
@@ -65,6 +66,7 @@
 										llenarTablaBusqueda();
 									?>
 								</TABLE>
+							</div>
 							</article>
 
 							
@@ -73,7 +75,7 @@
 							{
 								$bus = $_POST["buscar"];
 								
-								$db = mysql_connect("localhost", "root", "root");
+								$db = mysql_connect("localhost", "root", "");
 								mysql_select_db("autito",$db);
 								if($bus == "")
 								{
