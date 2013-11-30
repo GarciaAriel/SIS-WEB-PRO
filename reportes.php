@@ -42,21 +42,18 @@ class PDF extends FPDF
     while($row=mysql_fetch_row($res)){
       $this->Cell(40,5,$row[0],1);
       $this->Cell(40,5,$row[2],1);
+      $this->Cell(40,5,$row[8],1);
       $this->Cell(40,5,$row[9],1);
       $this->Cell(40,5,$row[1],1);
       $this->Ln();               
     }
    }
-   
-   //Tabla coloreada
-
-
      
 }
 
 $pdf=new PDF();
 //Títulos de las columnas
-$header=array('#Placa','Modelo','Categoria','Estado');
+$header=array('#Placa','Modelo','Categoria','Costo','Estado');
 $pdf->AliasNbPages();
 //Primera página
 $pdf->AddPage();

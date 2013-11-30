@@ -7,15 +7,13 @@ $aire = $_POST['aire'];
 $combustible = $_POST['combustible'];
 $motor = $_POST['motor'];
 $categoria = $_POST['categoria'];
-
-$cd = $_POST['cd'];
-$usb = $_POST['usb'];
-$mp3 = $_POST['mp3'];
-$radio = $_POST['radio'];
-$musica="";
+if(isset($_POST['cd'])) $cd = 1; else $cd = 0;
+if(isset($_POST['radio'])) $radio = 1; else $radio = 0;
+if(isset($_POST['mp3'])) $mp3 = 1; else $mp3 = 0;
+if(isset($_POST['usb'])) $usb = 1; else $usb = 0;
+$costo=$_POST['costo'];
 $estado = "disponible";
-
-$db = mysql_connect("localhost", "root", "");
+$db = mysql_connect("localhost", "root", "root");
 if (!$db){
 	echo "error en base de datos: ".mysql_error($db);
 }else 
@@ -33,11 +31,7 @@ if (!$db){
 		}
 		else
 		{
-			if($cd=="on"){$musica=$musica."cd|";};
-			if($usb=="on"){$musica=$musica."usb|";};
-			if($mp3=="on"){$musica=$musica."mp3|";};
-			if($radio=="on"){$musica=$musica."radio|";};
-			$inserta = mysql_query("INSERT INTO vehiculos (NumeroPlaca,Estado,Modelo,NumeroPuertas,NumeroPasajeros,AireAcondicionado,TipoCombustible,Motor,Musica,categoria) VALUES ('$placa','$estado','$modelo','$puertas','$pasajeros','$aire','$combustible','$motor','$musica','$categoria')", $db);
+			$inserta = mysql_query("INSERT INTO vehiculos (NumeroPlaca,Estado,Modelo,NumeroPuertas,NumeroPasajeros,AireAcondicionado,TipoCombustible,Motor,Categoria,Costo,CD,MP3,RADIO,USB) VALUES ('$placa','$estado','$modelo','$puertas','$pasajeros','$aire','$combustible','$motor','$categoria','$costo','".$cd."','".$mp3."','".$radio."','".$usb."')", $db);
 			if($inserta != false)
 			{
 				mysql_close($db);			

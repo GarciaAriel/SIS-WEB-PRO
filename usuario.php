@@ -108,7 +108,7 @@
 							{
 								$bus = $_POST["buscar"];
 								
-								$db = mysql_connect("localhost", "root", "");
+								$db = mysql_connect("localhost", "root", "root");
 								mysql_select_db("autito",$db);
 								if($bus == "")
 								{

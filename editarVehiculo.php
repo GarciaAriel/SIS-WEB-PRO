@@ -51,7 +51,7 @@
 							<?php 
 							function cargarDatos(){
 							$id=$_GET["aux"];
-							$db = mysql_connect("localhost", "root", "");
+							$db = mysql_connect("localhost", "root", "root");
 							mysql_select_db("autito",$db);
 							$res=mysql_query("SELECT * FROM vehiculos Where NumeroPlaca='$id'", $db);
 							
@@ -70,8 +70,12 @@
 										$_SESSION['airea'] = $valores['AireAcondicionado'];
 										$_SESSION['tcomb'] = $valores['TipoCombustible'];
 										$_SESSION['motor'] = $valores['Motor'];
-										$_SESSION['musica'] = $valores['Musica'];
 										$_SESSION['catego'] = $valores['Categoria'];
+										$_SESSION['costo']=$valores['Costo'];
+										$_SESSION['cd']=$valores['CD'];
+										$_SESSION['usb']=$valores['USB'];
+										$_SESSION['radio']=$valores['RADIO'];
+										$_SESSION['mp3']=$valores['MP3'];
 									}
 								}
 							}
@@ -132,10 +136,10 @@
 										<div class="row half">
 											<div class="6u">
 												Musica:<BR>
-												<input type="checkbox" name="cd"/>CD<BR>
-												<input type="checkbox" name="usb"/>USB<BR>
-												<input type="checkbox" name="radio" checked>Radio<BR>
-												<input type="checkbox" name="mp3">MP3<BR>
+												<input type="checkbox" name="cd" <?php if ($_SESSION['cd'] == 1) echo "checked='checked'"; ?>/>CD<BR>
+                                                <input type="checkbox" name="usb" <?php if ($_SESSION['usb'] == 1) echo "checked='checked'"; ?>/>USB<BR>
+                                                <input type="checkbox" name="radio" <?php if ($_SESSION['radio'] == 1) echo "checked='checked'"; ?>>Radio<BR>
+                                                <input type="checkbox" name="mp3" <?php if ($_SESSION['mp3'] == 1) echo "checked='checked'"; ?>>MP3<BR>
 											</div>
 										</div>
 										<div class="row half">
@@ -148,6 +152,11 @@
 												<option value="grande" <?if($_SESSION['catego']=="grande"){echo 'selected';} ?>>Todo terreno</option>
 												<option value="minivan" <?if($_SESSION['catego']=="minivan"){echo 'selected';} ?>>Convertible</option>
 											</select>
+											</div>
+										</div>
+										<div class="row half">
+											<div class="6u">
+												Costo:<input type="text" class="text" name="costo" value="<?php echo $_SESSION['costo'];?>"/>
 											</div>
 										</div>
 					  			<input type="Submit" name="Guardar" value="Guardar">

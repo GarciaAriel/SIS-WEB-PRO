@@ -1,7 +1,7 @@
 <?php
 $pass = $_POST["contrasena"];
 $login = $_POST["usuario"];
-$db = mysql_connect("localhost", "root", "");
+$db = mysql_connect("localhost", "root", "root");
 if (!$db)
 {
 	echo "error en base de datos: ".mysql_error($db);

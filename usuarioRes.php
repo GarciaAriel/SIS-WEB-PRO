@@ -83,7 +83,7 @@
 							{
 								$bus = $_POST["buscar"];
 								
-								$db = mysql_connect("localhost", "root", "");
+								$db = mysql_connect("localhost", "root", "root");
 								mysql_select_db("autito",$db);
 								if($bus == "")
 								{
@@ -98,7 +98,7 @@
 							
 								while($row=mysql_fetch_row($res))
 								{
-									echo "<form action='\"usuarioRes.php?aux=$row[0]\"' method='get'>";
+									echo "<form action='\"usuarioRegistrar.php?aux=$row[0]\"' method='get'>";
 									$id=$row[0];
 									echo "<TR>";
 									echo "<TD>".$row[0]."</TD>";	
@@ -121,9 +121,10 @@
 							<?php
 								$bus = $_GET["aux"];
 								
-								$db = mysql_connect("localhost", "root", "");
+								$db = mysql_connect("localhost", "root", "root");
 								mysql_select_db("autito",$db);
-								$res=mysql_query("SELECT * FROM vehiculos WHERE NumeroPlaca like $bus", $db);
+								echo $bus;
+								$res=mysql_query("SELECT * FROM vehiculos WHERE NumeroPlaca like '%$bus%'", $db);
 								$acc=mysql_query("SELECT * FROM accesorios", $db);
 
 								echo "<form action='registrarReserva.php' method='post' >";

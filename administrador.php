@@ -68,6 +68,7 @@
                                                                                 <TD>#Placa</TD>
                                                                                 <TD>Modelo</TD>
                                                                                 <TD>Categoria</TD>
+                                                                                <TD>Costo</TD>
                                                                                 <TD>Estado</TD>
                                                                                 <TD></TD>
                                                                                 <TD></TD>
@@ -77,7 +78,7 @@
                                                                                 llenarTablaBusqueda();
                                                                         ?>
                                                                 </TABLE>
-                                                                <a href>
+                                                                <a href="reportes.php">Imprimir Reportes</a>
                                                         </article>
                                                         <?php
                                                         function llenarTablaBusqueda(){
@@ -89,7 +90,8 @@
                                                                         $id=$row[0];
                                                                         echo "<TR>";
                                                                         echo "<TD>".$row[0]."</TD>";        
-                                                                        echo "<TD>".$row[2]."</TD>";        
+                                                                        echo "<TD>".$row[2]."</TD>";
+                                                                        echo "<TD>".$row[8]."</TD>";        
                                                                         echo "<TD>".$row[9]."</TD>";
                                                                         echo "<TD>".$row[1]."</TD>";       
                                                                         echo "<TD>"."<a href=\"editarVehiculo.php?aux=$id\">Modificar</a>"."</TD>";        
@@ -179,7 +181,7 @@
 									<div>
 										<div class="row half">
 											<div class="6u">
-												Nombre:<input type="text" class="text" name="nombre" placeholder="Nombre" />
+												Nombre:<input type="text" class="text" name="nombre" placeholder="Nombre" required/>
 											</div>
 										</div>
 										<div class="row half">
@@ -189,7 +191,7 @@
 										</div>
 										<div class="row half">
 											<div class="6u">
-												Costo:<input type="text" class="text" name="costo" placeholder="Costo" />
+												Costo:<input type="text" class="text" name="costo" placeholder="Costo" required/>
 											</div>
 										</div>
 										<div class="row">
@@ -227,7 +229,7 @@
 									<div>
 										<div class="row half">
 											<div class="6u">
-												# Placa:<input type="text" class="text" name="placa" placeholder="# de placa" />
+												# Placa:<input type="text" class="text" name="placa" placeholder="# de placa" required/>
 											</div>
 										</div>
                                         <div class="row half">
@@ -273,10 +275,10 @@
 										<div class="row half">
 											<div class="6u">
 												Musica:<BR>
-												<input type="checkbox" name="cd"/>CD<BR>
-												<input type="checkbox" name="usb"/>USB<BR>
-												<input type="checkbox" name="radio">Radio<BR>
-												<input type="checkbox" name="mp3">MP3<BR>
+												<input type="checkbox" name="cd" />CD<BR>
+												<input type="checkbox" name="usb" />USB<BR>
+												<input type="checkbox" name="radio" >Radio<BR>
+												<input type="checkbox" name="mp3" >MP3<BR>
 											</div>
 										</div>
 										<div class="row half">
@@ -289,6 +291,11 @@
 												<option value="grande">Todo terreno</option>
 												<option value="minivan">Convertible</option>
 											</select>
+											</div>
+										</div>
+										<div class="row half">
+											<div class="6u">
+												Costo:<input type="text" class="text" name="costo" placeholder="costo en Bs." required> 
 											</div>
 										</div>
 										<div class="row">

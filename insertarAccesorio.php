@@ -3,7 +3,7 @@ $nombre = $_POST['nombre'];
 $descripcion = $_POST['descripcion'];
 $costo = $_POST['costo'];
 
-$db = mysql_connect("localhost", "root", "");
+$db = mysql_connect("localhost", "root", "root");
 if (!$db){
 	echo "error en base de datos: ".mysql_error($db);
 }else 
