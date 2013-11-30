@@ -3,7 +3,8 @@ include ("seguridad.php");
 $placa = $_SESSION['palcaa'];
 $fei = $_POST['inicioF'];
 $fef = $_POST['finalF'];
-$ci = $_SESSION['ci'];
+$ci = $_POST['carnett'];
+//$ci = $_SESSION['ci'];
 $db = mysql_connect("localhost", "root", "");
 if (!$db)
 {
@@ -20,14 +21,14 @@ else
 			{
 				mysql_close($db);
 				echo "siii";
-				header("Location: usuario.php");
+				header("Location: administrador.php");
 			}
 			else 
 			{				
 				echo "error en base de datos:".mysql_error($db);
 				mysql_close($db);
 				echo "nooo";
-				header("Location: usuario.php");
+				header("Location: administrador.php");
 			}
 		
 	

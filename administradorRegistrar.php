@@ -1,6 +1,12 @@
 
 <!DOCTYPE HTML>
 
+<!--
+	Astral 2.5 by HTML5 UP
+	html5up.net | @n33co
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+
 <?php include ("seguridad.php");?>
 
 <html>
@@ -33,7 +39,7 @@
 				
 				<!-- Nav -->
 					<nav id="nav">
-						<a href="usuario.php" class="fa fa-home active"><span>Inicio</span></a>
+						<a href="administrador.php" class="fa fa-home active"><span>Inicio</span></a>
 						<a href="#reserva" class="fa fa-star"><span>Reservar Vehiculo</span></a>
 						<a href="usuario.php" class="fa fa-heart"><span>Inicio</span></a>
 						<a href="#salir" class="fa fa-heart"><span>Salir</span></a>
@@ -48,7 +54,7 @@
 	<!--&&&&&&&&&&&&&&&&&&     RESERVAR UN VEHICULO    &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&--> 
 							<article id="reserva" class="panel">
 								<header>
-									<h2>El vehiculo cuenta con las siguiente caracteristicas</h2>
+									
 								</header>
 								
 							<?php
@@ -59,11 +65,40 @@
 								$res=mysql_query("SELECT * FROM vehiculos WHERE NumeroPlaca like $bus", $db);
 								$acc=mysql_query("SELECT * FROM accesorios", $db);
 
-								echo "<form action='registrarReserva.php' method='post' >";
+								
+								$estadovehiculo = "";
 								while($row=mysql_fetch_row($res))
 								{
+									$estadovehiculo = $row[1];
 									$_SESSION['palcaa'] = $row[0];
-									
+									if ($row[1] == "disponible") {
+										echo "<form action='registrarReservaAdmin.php' method='post' >";
+										echo "<h2>Ingrese los datos del solicitante</h2>";
+										echo "Nombre: <input type='text' name='namee' ><br>";
+										echo "Carnet: <input type='text' name='carnett' ><br>";
+
+									}
+									else
+										if ($row[1] == "reservado") {
+											echo "<form action='registrarReserva.php' method='post' >";
+											echo "<h2>Datos del solicitante </h2>";
+											$res2=mysql_query("SELECT Carnet FROM prestamos WHERE NumeroPlaca like $bus", $db);
+											$row2=mysql_fetch_row($res2);
+											$usuarioQueSolicito = $row2[0];
+											$res3=mysql_query("SELECT * FROM usuarios WHERE Carnet like $usuarioQueSolicito", $db);
+											$row3=mysql_fetch_row($res3);
+
+											echo "<label for='male'>Nombre: ".$row3[1]."</label>";
+											echo "<br>";
+											echo "<label for='male'>Apellido paterno: ".$row[2]."</label>";
+											echo "<br>";
+											
+
+										}
+										else{	echo "oto";
+											echo "<form action='registrarReserva.php' method='post' >";
+										}
+									echo "<h2>El vehiculo cuenta con las siguiente caracteristicas</h2>";
 									echo "<label for='male'>Numero de placa: ".$row[0]."</label>";
 									echo "<br>";
 									echo "<label for='male'>Modelo: ".$row[2]."</label>";
@@ -86,6 +121,7 @@
 									echo "<br>";echo "<br>";
 
 								}
+
 								echo "<h2>Accesorios adicionales que puede solicitar</h2>";
 								$acc=mysql_query("SELECT * FROM accesorios", $db);
 
@@ -94,8 +130,19 @@
 									echo "<input type='checkbox' name='accc' value='Bike'>".$roww[1]."<br>";
 							
 								}
-echo "<br>";echo "<br>";
-									echo "<input type='submit' class='button' value='Reservar' />";
+								echo "<br>";echo "<br>";
+	
+									if ($estadovehiculo == "disponible") {
+										echo "<input type='submit' class='button' value='Reservar' />";
+									}						
+									else		
+										if ($estadovehiculo == "reservado") {
+											echo "<input type='submit' class='button' value='Confirmar la Reserva' />";
+										}
+										else{
+											echo "<input type='submit' class='button' value='Liberar vehiculo' />";
+										}
+										
 
 									echo "</form>";
 

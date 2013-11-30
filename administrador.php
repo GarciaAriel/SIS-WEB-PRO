@@ -90,9 +90,10 @@
                                                                         echo "<TD>".$row[0]."</TD>";        
                                                                         echo "<TD>".$row[2]."</TD>";        
                                                                         echo "<TD>".$row[9]."</TD>";
-                                                                        echo "<TD>".$row[1]."</TD>";        
+                                                                        echo "<TD>".$row[1]."</TD>";       
                                                                         echo "<TD>"."<a href=\"editarVehiculo.php?aux=$id\">Modificar</a>"."</TD>";        
                                                                         echo "<TD>"."<a href=\"eliminarVehiculo.php?aux=$id\">Eliminar</a>"."</TD>";
+                                                                        echo "<TD>"."<a href=\"administradorRegistrar.php?aux=$id\">Ver</a>"."</TD>";
                                                                         echo "</TR>";        
                                                                 }
                                                         }
