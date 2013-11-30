@@ -1,6 +1,6 @@
 <?php
 	$id = $_GET["aux"];
-	$db = mysql_connect("localhost", "root", "root");
+	$db = mysql_connect("localhost", "root", "");
 	mysql_select_db("autito",$db);
 	$inserta=mysql_query("SELECT * FROM vehiculos WHERE NumeroPlaca='$id'");
 	$row=mysql_fetch_array($inserta);
