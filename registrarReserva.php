@@ -4,7 +4,7 @@ $placa = $_SESSION['palcaa'];
 $fei = $_POST['inicioF'];
 $fef = $_POST['finalF'];
 $ci = $_SESSION['ci'];
-$db = mysql_connect("localhost", "root", "root");
+$db = mysql_connect("localhost", "root", "");
 if (!$db)
 {
 	echo "error en base de datos: ".mysql_error($db);

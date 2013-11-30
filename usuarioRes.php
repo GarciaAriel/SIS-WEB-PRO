@@ -83,7 +83,7 @@
 							{
 								$bus = $_POST["buscar"];
 								
-								$db = mysql_connect("localhost", "root", "root");
+								$db = mysql_connect("localhost", "root", "");
 								mysql_select_db("autito",$db);
 								if($bus == "")
 								{
@@ -121,7 +121,7 @@
 							<?php
 								$bus = $_GET["aux"];
 								
-								$db = mysql_connect("localhost", "root", "root");
+								$db = mysql_connect("localhost", "root", "");
 								mysql_select_db("autito",$db);
 								echo $bus;
 								$res=mysql_query("SELECT * FROM vehiculos WHERE NumeroPlaca like '%$bus%'", $db);

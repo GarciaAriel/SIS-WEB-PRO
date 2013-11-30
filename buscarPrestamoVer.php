@@ -1,5 +1,6 @@
 <?php include ("seguridad.php");?>
-
+$apaterno = $_GET['carr'];
+$apaterno = $_GET['pla'];
 <html>
 	<head>
     <?php echo $_SESSION['nombre'];?>
@@ -13,7 +14,7 @@
 		<script src="js/jquery.min.js"></script>
 		<script src="js/config.js"></script>
 		<script src="js/skel.min.js"></script>
-		<noscript>
+		<noscript> 
 			<link rel="stylesheet" href="css/skel-noscript.css" />
 			<link rel="stylesheet" href="css/style.css" />
 			<link rel="stylesheet" href="css/style-desktop.css" />
@@ -31,7 +32,7 @@
 				<!-- Nav -->
 					<nav id="nav">
 						<a href="administrador.php" class="fa fa-home active"><span>Inicio</span></a>
-						<a href="#buscarprestamo" class="fa fa-star"><span>Registrar Auto</span></a>
+						<a href="#prestamo" class="fa fa-star"><span>Registrar Auto</span></a>
 						<a href="#salir" class="fa fa-heart"><span>Salir</span></a>
                         
 						
@@ -39,21 +40,13 @@
 
 				<!-- Main -->
 					<div id="main">
-	<!--&&&&&&&&&&&&&&&&&&     BUSCAR VEHICULO    &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&--> 
-							<article id="buscarprestamo" class="panel">
-								<header> 
-									<h2>buscador</h2>
+
+		<!--&&&&&&&&&&&&&&&&&&     RESERVAR UN VEHICULO    &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&--> 
+							<article id="prestamo" class="panel">
+								<header>
+									
 								</header>
-								<FORM METHOD=post ACTION="#buscarprestamo" name="kik" id="kik">
-									<div class="row half">
-										<div class="6u"> 
-											Buscar: <INPUT TYPE="text" NAME="buscar" id="buscar">
-											<input type="submit"  value="Buscar" />
-											
-										</div>
-									</div> 
-								
-									<TABLE BORDER=1>
+								<TABLE BORDER=1>
 										<TR>
 											<TD>Nombre</TD>
 											<TD>Apellido</TD>
@@ -62,49 +55,60 @@
 											
 											<TD></TD>
 										</TR>
-										<?php
-											llenarTablaBusqueda();
-										?>
-									</TABLE>
-								</FORM>
-							</article>
-
-							
 							<?php
-							function llenarTablaBusqueda()
-							{
-								$bus = $_POST["buscar"];
+								$ca = $_GET["carr"];
+								$pl = $_GET["pla"];
+
 								
 								$db = mysql_connect("localhost", "root", "");
 								mysql_select_db("autito",$db);
-								if($bus == "")
-								{
-									$res=mysql_query("SELECT  u.Nombre, u.APaterno, v.NumeroPlaca, v.Modelo, v.Costo, P.Estado, P.FechaInicio, P.FechaDevolucion,u.Carnet FROM prestamos P, usuarios u, vehiculos v WHERE P.Carnet = u.Carnet and P.NumeroPlaca = v.NumeroPlaca", $db);
-									
-								}
-								else
-								{
-									$res=mysql_query("SELECT u.Nombre, u.APaterno, v.NumeroPlaca, v.Modelo, v.Costo, P.Estado, P.FechaInicio, P.FechaDevolucion,u.Carnet FROM prestamos P, usuarios u, vehiculos v WHERE P.Carnet = u.Carnet and P.NumeroPlaca = v.NumeroPlaca and P.NumeroPlaca like $bus", $db);
-									
-								}
-							
+								$res=mysql_query("SELECT  u.Nombre, u.APaterno, v.NumeroPlaca, v.Modelo, v.Costo, P.Estado, P.FechaInicio, P.FechaDevolucion,u.Carnet FROM prestamos P, usuarios u, vehiculos v WHERE P.Carnet = '$ca' and '$ca' = u.Carnet and '$pl' = v.NumeroPlaca and P.NumeroPlaca = '$pl'", $db);
+								
+
+								$_SESSION['carrr'] = $ca;
+								$_SESSION['plaaa'] = $pl;
+
 								while($row=mysql_fetch_row($res))
 								{
+									$estadoo = $row[5];
+
+									if ($estadoo == "porConfirmar") {
+                                    	echo "<form action='buscarPrestamoConfirm.php' method='post' >";
+                                    }
+                                    else
+                                    {
+                                 		if ($estadoo == "confirmado") 
+                                 		{
+                                    		echo "<form action='buscarPrestamoCerrar.php' method='post' >";
+	                                    }
+	                                }
+
                                     echo "<TR>";
                                     echo "<TD>".$row[0]."</TD>";        
                                     echo "<TD>".$row[1]."</TD>";
                                     echo "<TD>".$row[2]."</TD>";  
                                     $plaa = $row[2];
                                     echo "<TD>".$row[5]."</TD>";        
-                                    
                                     $cii =  $row[8];
-                                    echo "<TD>"."<a href=\"buscarPrestamoVer.php?carr=$cii&pla=$plaa\">Ver</a>"."</TD>";
                                     echo "</TR>";
+                                	echo "</TABLE>";    
+                                 	if ($estadoo == "porConfirmar") {
+                                    	echo "<input type='submit' class='button' value='Confirmar' />";
+                                    }
+                                    else
+                                    {
+                                 		if ($estadoo == "confirmado") 
+                                 		{
+                                    		echo "<input type='submit' class='button' value='Cerrar' />";
+	                                    }
+	                                }   
 								}
 								
-							}
-
-							?>    
+								echo "</form>";
+							
+							?> 
+			
+					</article>    
     
 	
         <!--&&&&&&&&&&&&&&&&&&&&&&&&&&  SALIRRRR   &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&-->
