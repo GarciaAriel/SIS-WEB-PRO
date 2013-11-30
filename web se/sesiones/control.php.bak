@@ -2,7 +2,7 @@
 //vemos si el usuario y contraseña es váildo
 $pass = $_POST["contrasena"];
 $login = $_POST["usuario"];
-$db = mysql_connect("localhost", "root", "root");
+$db = mysql_connect("localhost", "root", "");
 if (!$db)
 {
 	echo "error en base de datos: ".mysql_error($db);
