@@ -41,7 +41,8 @@
 						<a href="#funciones" class="fa fa-folder"><span>Funciones</span></a>
 						<a href="#registrar" class="fa fa-star"><span>Registrar Auto</span></a>
 						<a href="#modificarPerfil" class="fa fa-star"><span>Modificar Perfil</span></a>
-						<a href="#buscarauto" class="fa fa-star"><span>Buscar</span></a>
+						<a href="#buscarauto" class="fa fa-star"><span>Buscar Auto</span></a>
+						<a href="buscarPrestamo.php" class="fa fa-star"><span>Buscar Prestamo</span></a>
 						<a href="#registraracc" class="fa fa-star"><span>Registrar Accesorio</span></a>
 						<a href="#salir" class="fa fa-heart"><span>Salir</span></a>
                         
@@ -121,8 +122,6 @@
 								</a>
 
 							</article>
-
-	
 							
 	<!--&&&&&&&&&&&&&&&&&&&&& 	MODIFICAR DATOS PERSONALES  &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&-->
 							<article id="modificarPerfil" class="panel">

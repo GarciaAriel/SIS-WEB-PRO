@@ -1,5 +1,4 @@
 <?php
-echo "llega aqui??";
 include ("seguridad.php");
 
 $placa = $_SESSION['palcaaas']; 
@@ -16,7 +15,6 @@ else
 
 	mysql_select_db("autito",$db);	
 	mysql_query("UPDATE prestamos SET Estado='Confirmado' WHERE NumeroPlaca='$placa' && Carnet='$ci'"  );
-	echo "update";
 	mysql_close($db);
 	header("Location: administrador.php");
 	
