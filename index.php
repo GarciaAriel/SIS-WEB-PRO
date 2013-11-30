@@ -37,7 +37,6 @@ echo "Hoy es ", date("d/n/Y");
 				<!-- Nav -->
 					<nav id="nav">
 						<a href="#me" class="fa fa-home active"><span>Inicio</span></a>
-						<a href="#work" class="fa fa-folder"><span>Buscar</span></a>
 						<a href="#ingresar" class="fa fa-user"><span>Ingresar</span></a>
                         <a href="#email" class="fa fa-star"><span>Registrarse</span></a>
 						
@@ -73,12 +72,12 @@ echo "Hoy es ", date("d/n/Y");
                                 	<div>
                                     	<div class="row half">
                                         	<div class="6u">
-                                            	<input type="text" class="text" name="email" placeholder="Email"/>
+                                            	<input type="text" required class="text" name="email" placeholder="Email"/>
                                             </div>
                                         </div>
                                         <div class="row half">
                                         	<div class="6u">
-                                            	<input type="password" class="text" name="contra" placeholder="Contrase&ntilde;a"/>
+                                            	<input type="password" required class="text" name="contra" placeholder="Contrase&ntilde;a"/>
                                             </div>
                                         </div>
                                         <div class="row">
@@ -156,20 +155,6 @@ echo "Hoy es ", date("d/n/Y");
 								</form>
 							</article>
 
-	<!--&&&&&&&&&&&&&&&&&&     Work    &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&--> 
-							<article id="work" class="panel">
-								<header>
-									<h2>buscador</h2>
-								</header>
-								<p>
-									en construccion
-								</p>
-								
-							</article>
-
-
-
-					</div>
 		
 <!-------------------------------------- PIE DE PAGINA --------------------->
 					<div id="footer">

@@ -42,7 +42,6 @@
 						<a href="#me" class="fa fa-home active"><span>Inicio</span></a>
 						<a href="#funciones" class="fa fa-folder"><span>Funciones</span></a>
 						<a href="usuarioRes.php" class="fa fa-star"><span>Buscar Auto</span></a>
-						<a href="#reserva" class="fa fa-star"><span>Registrar Auto</span></a>
 						<a href="#modificarPerfil" class="fa fa-star"><span>Modificar Perfil</span></a>
 						<a href="#salir" class="fa fa-heart"><span>Salir</span></a>
                         
@@ -137,16 +136,6 @@
 
 							}
 							?> 
-	<!--&&&&&&&&&&&&&&&&&&     RESERVAR UN VEHICULO    &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&--> 
-							<article id="reserva" class="panel">
-								<header>
-									<h2>reservar un vehiculo</h2>
-								</header>
-								<p>
-									en construccion
-								</p>
-								
-							</article>  
 	<!--&&&&&&&&&&&&&&&&&&  VERRRRRR   RESERVAR UN VEHICULO    &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&--> 
 							<article id="reserva" class="panel">
 								<header>
@@ -167,13 +156,13 @@
 										<div class="row half">
 											<div class="6u">
 												<font color="red">*</font>
-												Nombre:<input type="text" class="text" name="nombre" value=<?php echo $_SESSION['nombre'];?> />
+												Nombre:<input type="text" required  class="text" name="nombre" value=<?php echo $_SESSION['nombre'];?> />
 											</div>
 										</div>
                                         <div class="row half">
 											<div class="6u">
 												<font color="red">*</font>
-												Apellido paterno:<input type="text" class="text" name="apellidop" value=<?php echo $_SESSION['apaterno'];?> />
+												Apellido paterno:<input type="text" required  class="text" name="apellidop" value=<?php echo $_SESSION['apaterno'];?> />
 											</div>
 										</div>
 										<div class="row half">
@@ -189,12 +178,13 @@
 										<div class="row half">
 											<div class="6u">
 												<font color="red">*</font>
-												Telefono:<input type="text" class="text" name="telefono" value=<?php echo $_SESSION['telefono'];?> />
+												Telefono:<input type="text" class="text" required  name="telefono" value=<?php echo $_SESSION['telefono'];?> />
 											</div>
 										</div>
 										<div class="row half">
 											<div class="6u">
-												# Carnet:<input type="text" class="text" name="ci" value=<?php echo $_SESSION['ci'];?> />
+												<font color="red">*</font>
+												# Carnet:<input type="text" required  class="text" name="ci" value=<?php echo $_SESSION['ci'];?> />
 											</div>
                                         </div>
                                         <div class="row">
@@ -222,67 +212,7 @@
                                     </div>
                                 </form>
 							</article>    
-		<!--&&&&&&&&&&&&&&&&&&&&&&&& REGISTRARSE UN VEHICULO   &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&-->
-							<article id="registrar" class="panel">
-								<header>
-									<h2>Ingrese los datos del vehiculo</h2>
-								</header>
-								<form action="#" method="post">
-									<div>
-										<div class="row half">
-											<div class="6u">
-												<input type="text" class="text" name="placa" placeholder="Numero de placa" />
-											</div>
-										</div>
-                                        <div class="row half">
-											<div class="6u">
-												<input type="text" class="text" name="modelo" placeholder="Modelo" />
-											</div>
-										</div>
-										<div class="row half">
-											<div class="6u">
-												<input type="text" class="text" name="puertas" placeholder="# Puertas" />
-											</div>
-                                        </div>
-                                        <div class="row half">
-											<div class="6u">
-												<input type="text" class="text" name="pasajeros" placeholder="# Pasajeros" />
-											</div>
-										</div>
-                                        <div class="row half">
-											<div class="6u">
-												<input type="text" class="text" name="aire" placeholder="Aire acondicionado" />
-											</div>
-										</div>
-                                        <div class="row half">
-											<div class="6u">
-												<input type="text" class="text" name="combustible" placeholder="Tipo combustible" />
-											</div>
-										</div>
-										<div class="row half">
-											<div class="6u">
-												<input type="text" class="text" name="motor" placeholder="Motor" />
-											</div>
-										</div>
-										<div class="row half">
-											<div class="6u">
-												<input type="text" class="text" name="musica" placeholder="Musica" />
-											</div>
-										</div>
-										<div class="row half">
-											<div class="6u">
-												<input type="text" class="text" name="categoria" placeholder="Categoria" />
-											</div>
-										</div>
-										<div class="row">
-											<div class="12u">
-												<input type="submit" class="button" value="Registrar Vehiculo" />
-											</div>
-										</div>
-									</div>
-								</form>
-							</article>
-
+		
 	<!--&&&&&&&&&&&&&&&&&&&&&&&&&& FUNCIONES ADMIN &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&--> 
 							<article id="funciones" class="panel">
 								<header>

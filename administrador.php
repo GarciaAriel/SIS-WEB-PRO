@@ -126,20 +126,20 @@
 	<!--&&&&&&&&&&&&&&&&&&&&& 	MODIFICAR DATOS PERSONALES  &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&-->
 							<article id="modificarPerfil" class="panel">
 								<header>
-									<h2>Ingrese sus datos</h2>
+									<h2>Puede modificar sus datos personales</h2>
 								</header>
 								<form action="actualizarDatosUsuario.php" method="post">
 									<div>
 										<div class="row half">
 											<div class="6u">
 												<font color="red">*</font>
-												Nombre:<input type="text" class="text" name="nombre" value=<?php echo $_SESSION['nombre'];?> />
+												Nombre:<input type="text" class="text" required name="nombre" value=<?php echo $_SESSION['nombre'];?> />
 											</div>
 										</div>
                                         <div class="row half">
 											<div class="6u">
 												<font color="red">*</font>
-												Apellido paterno:<input type="text" class="text" name="apellidop" value=<?php echo $_SESSION['apaterno'];?> />
+												Apellido paterno:<input type="text" required class="text" name="apellidop" value=<?php echo $_SESSION['apaterno'];?> />
 											</div>
 										</div>
 										<div class="row half">
@@ -155,17 +155,19 @@
 										<div class="row half">
 											<div class="6u">
 												<font color="red">*</font>
-												Telefono:<input type="text" class="text" name="telefono" value=<?php echo $_SESSION['telefono'];?> />
+												Telefono:<input type="text" required class="text" name="telefono" value=<?php echo $_SESSION['telefono'];?> />
 											</div>
 										</div>
 										<div class="row half">
 											<div class="6u">
-												# Carnet:<input type="text" class="text" name="ci" value=<?php echo $_SESSION['ci'];?> />
+												<font color="red">*</font>
+												# Carnet:<input type="text" required class="text" name="ci" value=<?php echo $_SESSION['ci'];?> />
 											</div>
                                         </div>
                                         <div class="row">
 											<div class="12u">
-												<input type="submit" class="button" value="Registrarse" />
+
+												<input type="submit" class="button" value="Guardar Cambios" />
 											</div>
 										</div>
 									</div>
@@ -179,7 +181,9 @@
 								<form action="insertarAccesorio.php" method="post">
 									<div>
 										<div class="row half">
+											
 											<div class="6u">
+											<font color="red">*</font>
 												Nombre:<input type="text" class="text" name="nombre" placeholder="Nombre" required/>
 											</div>
 										</div>
@@ -189,7 +193,9 @@
 											</div>
 										</div>
 										<div class="row half">
+											
 											<div class="6u">
+												<font color="red">*</font>
 												Costo:<input type="text" class="text" name="costo" placeholder="Costo" required/>
 											</div>
 										</div>
@@ -228,26 +234,31 @@
 									<div>
 										<div class="row half">
 											<div class="6u">
-												# Placa:<input type="text" class="text" name="placa" placeholder="# de placa" required/>
+												<font color="red">*</font>
+												# Placa:<input type="text" required class="text" name="placa" placeholder="# de placa" required/>
 											</div>
 										</div>
                                         <div class="row half">
 											<div class="6u">
-												Modelo:<input type="text" class="text" name="modelo" placeholder="Modelo" />
+												<font color="red">*</font>
+												Modelo:<input type="text" required class="text" name="modelo" placeholder="Modelo" />
 											</div>
 										</div>
 										<div class="row half">
 											<div class="6u">
-												# Puertas:<input type="text" class="text" name="puertas" placeholder="# Puertas" />
+												<font color="red">*</font>
+												# Puertas:<input type="text" required class="text" name="puertas" placeholder="# Puertas" />
 											</div>
                                         </div>
                                         <div class="row half">
 											<div class="6u">
-												# Pasajeros<input type="text" class="text" name="pasajeros" placeholder="# Pasajeros" />
+												<font color="red">*</font>
+												# Pasajeros<input type="text" required class="text" name="pasajeros" placeholder="# Pasajeros" />
 											</div>
 										</div>
                                         <div class="row half">
 											<div class="6u">
+
 												Aire acondicionado:<select name="aire">
 													  <option value="SI">SI</option>
 													  <option value="NO">NO</option>
@@ -294,7 +305,8 @@
 										</div>
 										<div class="row half">
 											<div class="6u">
-												Costo:<input type="text" class="text" name="costo" placeholder="costo en Bs." required> 
+												<font color="red">*</font>
+												Costo:<input type="text" required class="text" name="costo" placeholder="costo en Bs." required> 
 											</div>
 										</div>
 										<div class="row">
