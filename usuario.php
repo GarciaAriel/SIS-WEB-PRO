@@ -127,7 +127,7 @@
 									echo "<TR>";
 									echo "<TD>".$row[0]."</TD>";	
 									echo "<TD>".$row[2]."</TD>";
-									echo "<TD>".$row[9]."</TD>";	
+									echo "<TD>".$row[8]."</TD>";	
 									echo "<TD>"."<a href=\"editarProducto.php?aux=$id\">Modificar</a>"."</TD>";	
 									echo "<TD>"."<a href=\"usuarioRes.php?aux=$id\" > Ver</a>"."</TD>";	
 									echo "</TR>";

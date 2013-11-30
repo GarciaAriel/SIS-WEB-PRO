@@ -5,6 +5,7 @@ $fei = $_POST['inicioF'];
 $fef = $_POST['finalF'];
 $ci = $_SESSION['ci'];
 $db = mysql_connect("localhost", "root", "root");
+$acce =  $_POST['accc'];
 if (!$db)
 {
 	echo "error en base de datos: ".mysql_error($db);

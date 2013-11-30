@@ -13,7 +13,8 @@ if (!$db)
 else 
 {
 
-	mysql_select_db("autito",$db);	
+	mysql_select_db("autito",$db);
+	mysql_query("UPDATE vehiculos SET Estado='Confirmado' WHERE NumeroPlaca='$placa'"  );	
 	mysql_query("UPDATE prestamos SET Estado='Confirmado' WHERE NumeroPlaca='$placa' && Carnet='$ci'"  );
 	mysql_close($db);
 	header("Location: administrador.php");

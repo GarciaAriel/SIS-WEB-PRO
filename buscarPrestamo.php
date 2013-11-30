@@ -48,12 +48,12 @@
 									<div class="row half">
 										<div class="6u"> 
 											Buscar: <INPUT TYPE="text" NAME="buscar" id="buscar">
-											<input type="submit"  value="Buscar" />
+											<input type="submit" class="button"  value="Buscar" />
 											
 										</div>
 									</div> 
-								
-									<TABLE BORDER=1>
+								<div class="CSSTableGenerator" >
+									<TABLE border="1">
 										<TR>
 											<TD>Nombre</TD>
 											<TD>Apellido</TD>
@@ -66,6 +66,7 @@
 											llenarTablaBusqueda();
 										?>
 									</TABLE>
+								</div>	
 								</FORM>
 							</article>
 
