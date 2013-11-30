@@ -99,13 +99,13 @@ echo "Hoy es ", date("d/n/Y");
 										<div class="row half">
 											<div class="6u">
 												<font color="red">*</font>
-												Nombre:<input type="text" class="text" name="nombre" placeholder="Nombre" />
+												Nombre:<input type="text" class="text" name="nombre" placeholder="Nombre" required />
 											</div>
 										</div>
                                         <div class="row half">
 											<div class="6u">
 												<font color="red">*</font>
-												Apellido paterno:<input type="text" class="text" name="apellidop" placeholder="Apellido Paterno" />
+												Apellido paterno:<input type="text" class="text" name="apellidop" placeholder="Apellido Paterno" required/>
 											</div>
 										</div>
 										<div class="row half">
@@ -121,7 +121,7 @@ echo "Hoy es ", date("d/n/Y");
 										<div class="row half">
 											<div class="6u">
 												<font color="red">*</font>
-												Telefono:<input type="text" class="text" name="telefono" placeholder="Telefono" />
+												Telefono:<input type="text" class="text" name="telefono" placeholder="Telefono" required/>
 											</div>
 										</div>
 										<div class="row half">
@@ -132,19 +132,19 @@ echo "Hoy es ", date("d/n/Y");
                                         <div class="row half">
 											<div class="6u">
 												<font color="red">*</font>
-												Email:<input type="text" class="text" name="email" placeholder="Email" />
+												Email:<input type="email" class="text" name="email" placeholder="your@email.com" autofocus required pattern="[^@]+@[^@]+\.[a-zA-Z]{2,6}" />
 											</div>
 										</div>
                                         <div class="row half">
 											<div class="6u">
 												<font color="red">*</font>
-												Contrase&ntilde;a:<input type="password" class="text" name="con1" placeholder="Contrase&ntilde;a" />
+												Contrase&ntilde;a:<input type="password" class="text" name="con1" placeholder="Contrase&ntilde;a" required />
 											</div>
 										</div>
                                         <div class="row half">
 											<div class="6u">
 												<font color="red">*</font>
-												Repetir contrase&ntilde;a:<input type="password" class="text" name="con2" placeholder="Contrase&ntilde;a" />
+												Repetir contrase&ntilde;a:<input type="password" class="text" name="con2" placeholder="Contrase&ntilde;a" required/>
 											</div>
 										</div>
 										<div class="row">

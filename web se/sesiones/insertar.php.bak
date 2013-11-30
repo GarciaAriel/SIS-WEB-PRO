@@ -6,7 +6,7 @@ $telefono = $_POST['telefono'];
 $direccion = $_POST['direccion'];
 $sexo = $_POST['sexo'];
 $password = $_POST['contrasenia'];
-$db = mysql_connect("localhost", "root", "");
+$db = mysql_connect("localhost", "root", "root");
 if (!$db)
 {
 	echo "error en base de datos: ".mysql_error($db);

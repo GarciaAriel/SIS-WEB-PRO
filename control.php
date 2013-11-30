@@ -54,7 +54,7 @@ $pa=MD5($pass);
 			}
 			else 
 			{
-				echo $pa;#"error en base de datoos:".mysql_error($db);
+				echo "error en base de datoos:".mysql_error($db);
 				mysql_close($db);
 				#header("Location: index.php"); //?errorusuario=si
 			}

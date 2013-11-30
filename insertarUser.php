@@ -9,7 +9,7 @@ $email = $_POST['email'];
 $cont = $_POST['con1'];
 $tipouser = "user";
 
-$db = mysql_connect("localhost", "root", "");
+$db = mysql_connect("localhost", "root", "root");
 if (!$db)
 {
 	echo "error en base de datos: ".mysql_error($db);
