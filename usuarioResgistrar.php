@@ -8,7 +8,7 @@
     <?php echo $_SESSION['nombre'];?>
     <?php echo $_SESSION['apaterno'];?>
 
-		<title>Astral by HTML5 UP</title>
+		<title>Rent a car Autito</title>
 		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
 		<meta name="description" content="" />
 		<meta name="keywords" content="" />

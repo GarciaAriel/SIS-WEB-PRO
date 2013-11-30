@@ -4,7 +4,7 @@ $placa = $_SESSION['palcaa'];
 $fei = $_POST['inicioF'];
 $fef = $_POST['finalF'];
 $ci = $_POST['carnett'];
-//$ci = $_SESSION['ci'];
+echo $fef;
 $db = mysql_connect("localhost", "root", "root")
 if (!$db)
 {

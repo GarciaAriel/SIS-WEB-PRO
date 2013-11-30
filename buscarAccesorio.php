@@ -31,7 +31,7 @@
 				<!-- Nav -->
 					<nav id="nav">
 						<a href="administrador.php" class="fa fa-home active"><span>Inicio</span></a>
-						<a href="#buscarprestamo" class="fa fa-star"><span>Registrar Auto</span></a>
+						<a href="#buscaraccesorio" class="fa fa-star"><span>Registrar Auto</span></a>
 						<a href="#salir" class="fa fa-heart"><span>Salir</span></a>
                         
 						
@@ -40,11 +40,11 @@
 				<!-- Main -->
 					<div id="main">
 	<!--&&&&&&&&&&&&&&&&&&     BUSCAR VEHICULO    &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&--> 
-							<article id="buscarprestamo" class="panel">
+							<article id="buscaraccesorio" class="panel">
 								<header> 
 									<h2>buscador</h2>
 								</header>
-								<FORM METHOD=POST ACTION="#buscarprestamo" name="kik" id="kik">
+								<FORM METHOD=POST ACTION="#buscaraccesorio" name="kik" id="kik">
 									<div class="row half">
 										<div class="6u"> 
 											Buscar: <INPUT TYPE="text" NAME="buscar" id="buscar">
@@ -56,13 +56,9 @@
 								<TABLE BORDER=1>
 									<TR>
 										<TD>Nombre</TD>
-										<TD>Apellido</TD>
-										<TD>#Placa</TD>
-										<TD>Modelo</TD>
+										<TD>Descripcion</TD>
 										<TD>Costo</TD>
-										<TD>Estado</TD>
-										<TD>Fecha Inicio</TD>
-										<TD>Fecha Devolucion</TD>
+										<TD></TD>
 										<TD></TD>
 									</TR>
 									<?php
@@ -81,26 +77,24 @@
 								mysql_select_db("autito",$db);
 								if($bus == "")
 								{
-									$res=mysql_query("SELECT u.Nombre, u.APaterno, v.NumeroPlaca, v.Modelo, v.Costo, P.Estado, P.FechaInicio, P.FechaDevolucion FROM prestamos P, usuarios u, vehiculos v WHERE P.Carnet = u.Carnet and P.NumeroPlaca = v.NumeroPlaca", $db);
+									$res=mysql_query("SELECT * FROM accesorios", $db);
 									
 								}
 								else
 								{
-									$res=mysql_query("SELECT u.Nombre, u.APaterno, v.NumeroPlaca, v.Modelo, v.Costo, P.Estado, P.FechaInicio, P.FechaDevolucion FROM prestamos P, usuarios u, vehiculos v WHERE P.Carnet = u.Carnet and P.NumeroPlaca = v.NumeroPlaca and P.NumeroPlaca like $bus", $db);
+									$res=mysql_query("SELECT * FROM accesorios Nombre like $bus", $db);
 									
 								}
 							
 								while($row=mysql_fetch_row($res))
 								{
+									$id=$row[0];
                                     echo "<TR>";
-                                    echo "<TD>".$row[0]."</TD>";        
-                                    echo "<TD>".$row[1]."</TD>";
-                                    echo "<TD>".$row[2]."</TD>";        
-                                    echo "<TD>".$row[3]."</TD>";
-                                    echo "<TD>".$row[4]."</TD>";
-                                    echo "<TD>".$row[5]."</TD>";        
-                                    echo "<TD>".$row[6]."</TD>";
-                                    echo "<TD>".$row[7]."</TD>";              
+                                    echo "<TD>".$row[1]."</TD>";        
+                                    echo "<TD>".$row[2]."</TD>";
+                                    echo "<TD>".$row[3]."</TD>";  
+                                    echo "<TD>"."<a href=\"editarAccesorio.php?aux=$id\">Modificar</a>"."</TD>";        
+                                    echo "<TD>"."<a href=\"eliminarAccesorio.php?aux=$id\">Eliminar</a>"."</TD>";             
                                     echo "</TR>";
 								}
 
