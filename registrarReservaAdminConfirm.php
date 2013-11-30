@@ -1,9 +1,10 @@
 <?php
 echo "llega aqui??";
 include ("seguridad.php");
-$placa = $_SESSION['palcaa'];
-$ci = $_POST['carnettt'];
-echo $placa."placa".$ci;
+
+$placa = $_SESSION['palcaaas']; 
+$ci = $_SESSION['carnettt'];
+
 //$ci = $_SESSION['ci'];
 $db = mysql_connect("localhost", "root", "root");
 if (!$db)
@@ -17,7 +18,7 @@ else
 	mysql_query("UPDATE prestamos SET Estado='Confirmado' WHERE NumeroPlaca='$placa' && Carnet='$ci'"  );
 	echo "update";
 	mysql_close($db);
-	#header("Location: administrador.php");
+	header("Location: administrador.php");
 	
 		
 	
