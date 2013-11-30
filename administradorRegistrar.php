@@ -77,19 +77,19 @@
 										echo "Carnet: <input type='text' name='carnett' ><br>";
 
 									}
-									else
+									else{
 										if ($row[1] == "reservado") {
 											echo "<form action='registrarReservaAdminConfirm.php' method='post' >";
 											echo "<h2>Datos del solicitante </h2>";
-											$res2=mysql_query("SELECT Carnet FROM prestamos WHERE NumeroPlaca like $bus", $db);
+											$res2=mysql_query("SELECT * FROM prestamos WHERE NumeroPlaca=$bus", $db);
 											$row2=mysql_fetch_row($res2);
 											$usuarioQueSolicito = $row2[0];
-											$res3=mysql_query("SELECT * FROM usuarios WHERE Carnet like $usuarioQueSolicito", $db);
+											$res3=mysql_query("SELECT * FROM usuarios WHERE Carnet='$usuarioQueSolicito'", $db);
 											$row3=mysql_fetch_row($res3);
 											$_SESSION['carnettt'] = $usuarioQueSolicito;
 											echo "<label for='male'>Nombre: ".$row3[1]."</label>";
 											echo "<br>";
-											echo "<label for='male'>Apellido paterno: ".$row[2]."</label>";
+											echo "<label for='male'>Apellido paterno: ".$row3[2]."</label>";
 											echo "<br>";
 											
 
@@ -97,6 +97,7 @@
 										else{	echo "oto";
 											echo "<form action='registrarReserva.php' method='post' >";
 										}
+									}
 									echo "<h2>El vehiculo cuenta con las siguiente caracteristicas</h2>";
 									echo "<label for='male'>Numero de placa: ".$row[0]."</label>";
 									echo "<br>";

@@ -1,10 +1,11 @@
 <?php
+echo "llega aqui??";
 include ("seguridad.php");
 $placa = $_SESSION['palcaa'];
 $ci = $_POST['carnettt'];
-
+echo $placa."placa".$ci;
 //$ci = $_SESSION['ci'];
-$db = mysql_connect("localhost", "root", "root")
+$db = mysql_connect("localhost", "root", "root");
 if (!$db)
 {
 	echo "error en base de datos: ".mysql_error($db);
