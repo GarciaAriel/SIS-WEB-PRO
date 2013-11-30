@@ -36,7 +36,7 @@ class PDF extends FPDF
     foreach($header as $col)
     $this->Cell(40,7,$col,1);
     $this->Ln();
-    $db = mysql_connect("localhost", "root", "root");
+    $db = mysql_connect("localhost", "root", "");
     mysql_select_db("autito",$db);
     $res=mysql_query("SELECT * FROM vehiculos", $db);
     while($row=mysql_fetch_row($res)){

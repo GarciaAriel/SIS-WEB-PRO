@@ -3,7 +3,7 @@ $email = $_POST["email"];
 $pass = $_POST["contra"];
 
 $pa=MD5($pass);
-	$db = mysql_connect("localhost", "root", "root");
+	$db = mysql_connect("localhost", "root", "");
 	if (!$db)
 	{
 		echo "error en base de datoss: ".mysql_error($db);

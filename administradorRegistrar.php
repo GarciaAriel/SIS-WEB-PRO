@@ -70,7 +70,7 @@
 								while($row=mysql_fetch_row($res))
 								{
 									$estadovehiculo = $row[1];
-									$_SESSION['palcaa'] = $row[0];
+									$_SESSION['palcaaa'] = $row[0];
 									if ($row[1] == "disponible") {
 										echo "<form action='registrarReservaAdmin.php' method='post' >";
 										echo "<h2>Ingrese los datos del solicitante</h2>";
@@ -80,14 +80,14 @@
 									}
 									else
 										if ($row[1] == "reservado") {
-											echo "<form action='registrarReserva.php' method='post' >";
+											echo "<form action='registrarReservaAdminConfirm.php' method='post' >";
 											echo "<h2>Datos del solicitante </h2>";
 											$res2=mysql_query("SELECT Carnet FROM prestamos WHERE NumeroPlaca like $bus", $db);
 											$row2=mysql_fetch_row($res2);
 											$usuarioQueSolicito = $row2[0];
 											$res3=mysql_query("SELECT * FROM usuarios WHERE Carnet like $usuarioQueSolicito", $db);
 											$row3=mysql_fetch_row($res3);
-
+											$_SESSION['carnettt'] = $usuarioQueSolicito;
 											echo "<label for='male'>Nombre: ".$row3[1]."</label>";
 											echo "<br>";
 											echo "<label for='male'>Apellido paterno: ".$row[2]."</label>";
