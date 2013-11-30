@@ -231,7 +231,7 @@
 
 
 										<div class="4u">
-											<a href="#buscarauto" class="jumplink pic"><img src="images/20.jpg" alt="">
+											<a href="usuarioRes.php" class="jumplink pic"><img src="images/20.jpg" alt="">
 											</a>
 										</div>
 										<div class="4u">

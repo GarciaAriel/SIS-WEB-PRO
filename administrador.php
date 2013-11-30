@@ -42,7 +42,6 @@
 						<a href="#registrar" class="fa fa-star"><span>Registrar Auto</span></a>
 						<a href="#modificarPerfil" class="fa fa-star"><span>Modificar Perfil</span></a>
 						<a href="#buscarauto" class="fa fa-star"><span>Buscar Auto</span></a>
-						<a href="buscarPrestamo.php" class="fa fa-star"><span>Buscar Prestamo</span></a>
 						<a href="#registraracc" class="fa fa-star"><span>Registrar Accesorio</span></a>
 						<a href="#salir" class="fa fa-heart"><span>Salir</span></a>
                         
@@ -344,6 +343,12 @@
 										</div>
 										<div class="4u">
 											<a href="#registraracc" class="jumplink pic"><img src="images/15.jpg" alt=""></a>
+										</div>
+										<div class="4u">
+											<a href="buscarAccesorio.php" class="jumplink pic"><img src="images/17.jpg" alt=""></a>
+										</div>
+										<div class="4u">
+											<a href="buscarPrestamo.php" class="jumplink pic"><img src="images/16.jpg" alt=""></a>
 										</div>
 									</div>
 								</section>
