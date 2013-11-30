@@ -7,7 +7,7 @@
 	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
 -->
 
-<?php include ("seguridad.php");?>
+<?php include ("seguridad.php");?> 
 
 <html>
 	<head>
@@ -59,18 +59,18 @@
 								
 							<?php
 								$bus = $_GET["aux"];
-								
+								echo $bus."kllklkl";
 								$db = mysql_connect("localhost", "root", "");
 								mysql_select_db("autito",$db);
-								$res=mysql_query("SELECT * FROM vehiculos WHERE NumeroPlaca like $bus", $db);
+								$res=mysql_query("SELECT * FROM vehiculos WHERE NumeroPlaca like $bus", $db); //numero de placa
 								$acc=mysql_query("SELECT * FROM accesorios", $db);
 
 								
 								$estadovehiculo = "";
 								while($row=mysql_fetch_row($res))
-								{
+								{ 
 									$estadovehiculo = $row[1];
-									$_SESSION['palcaaa'] = $row[0];
+									$_SESSION['palcaaas'] = $row[0];
 									if ($row[1] == "disponible") {
 										echo "<form action='registrarReservaAdmin.php' method='post' >";
 										echo "<h2>Ingrese los datos del solicitante</h2>";
@@ -78,11 +78,11 @@
 										echo "Carnet: <input type='text' name='carnett' ><br>";
 
 									}
-									else
+									else{
 										if ($row[1] == "reservado") {
 											echo "<form action='registrarReservaAdminConfirm.php' method='post' >";
 											echo "<h2>Datos del solicitante </h2>";
-											$res2=mysql_query("SELECT Carnet FROM prestamos WHERE NumeroPlaca like $bus", $db);
+											$res2=mysql_query("SELECT Carnet FROM prestamos WHERE NumeroPlaca='$bus'", $db);
 											$row2=mysql_fetch_row($res2);
 											$usuarioQueSolicito = $row2[0];
 											$res3=mysql_query("SELECT * FROM usuarios WHERE Carnet like $usuarioQueSolicito", $db);
@@ -98,6 +98,7 @@
 										else{	echo "oto";
 											echo "<form action='registrarReserva.php' method='post' >";
 										}
+									}
 									echo "<h2>El vehiculo cuenta con las siguiente caracteristicas</h2>";
 									echo "<label for='male'>Numero de placa: ".$row[0]."</label>";
 									echo "<br>";
